@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BmTheaterHub</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <header class="topbar">
+
+        <h2>🎭 BmTheaterHub</h2>
+
+        <button id="logoutBtn">
+            Logout
+        </button>
+
+    </header>
+
+    <div class="dashboard-container">
+
+        <div class="profile-card">
+
+        <div class="profile-header">
+
+        <div class="profile-photo">
+
+    <img
+        id="profileImage"
+        src="images/default-avatar.png"
+        alt="Profile">
+
+    <button id="changePhotoBtn">
+        📷
+    </button>
+
+</div>
+
+<input
+    type="file"
+    id="profileImageInput"
+    accept="image/*"
+    hidden>       
+
+    <div class="profile-info">
+
+        <h1 id="name"></h1>
+
+        <div class="badge-row">
+
+            <span id="verifiedBadge">
+                ⭐ Verified
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+           <p id="profileType"></p>
+
+           <p id="city"></p>
+
+           <p id="whatsapp"></p>
+
+           <p id="email"></p>
+
+           <p id="about"></p>
+
+            <button class="edit-btn">
+                Edit Profile
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

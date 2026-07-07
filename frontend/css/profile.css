@@ -1,0 +1,140 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+
+    background:#0f1117;
+
+    color:white;
+
+    padding:40px 20px;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+    margin:30px auto;
+}
+
+.profile-card{
+
+    background:#1a1d24;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    border-radius:20px;
+
+    padding:28px;
+}
+
+.profile-card h1{
+
+    text-align:center;
+
+    color:#d4af37;
+
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.profile-card p{
+
+    text-align:center;
+
+    color:#cccccc;
+
+    margin-bottom:22px;
+    font-size:16px;
+}
+
+.profile-card input,
+.profile-card select,
+.profile-card textarea{
+
+    width:100%;
+
+    padding:13px 15px;
+
+    margin-bottom:15px;
+
+    background:#11141d;
+
+    border:none;
+
+    border-radius:12px;
+
+    color:white;
+
+    font-size:15px;
+}
+
+.profile-card textarea{
+
+    min-height:90px;
+
+    resize:none;
+}
+
+#createBtn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#d4af37;
+
+    color:black;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+#createBtn:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+}
+
+@media (max-width:768px){
+
+    body{
+
+        padding:15px;
+    }
+
+    .profile-card{
+     
+     padding:20px;
+
+    }
+
+    .profile-card h1{
+
+        font-size:36px;
+    }
+
+    .profile-card p{
+
+    font-size:16px;
+
+ }
+
+.container{
+    max-width:100%;
+}
+
+}
