@@ -57,38 +57,66 @@ router.get("/me", auth, async (req, res) => {
 });
 
 router.put("/update", auth, async (req, res) => {
+
     try {
 
         const profile = await Profile.findOneAndUpdate(
+
             {
                 userId: req.user.userId
             },
-            req.body,
+
+            {
+                $set: {
+                    name: req.body.name,
+                    profileType: req.body.profileType,
+                    city: req.body.city,
+                    state: req.body.state,
+                    experience: req.body.experience,
+                    about: req.body.about,
+                    whatsapp: req.body.whatsapp
+                }
+            },
+
             {
                 new: true
             }
+
         );
 
         if (!profile) {
+
             return res.status(404).json({
+
                 message: "Profile not found"
+
             });
+
         }
 
         res.json({
-            message: "Profile updated successfully",
+
+            message: "Profile Updated Successfully",
+
             profile
+
         });
 
-    } catch (error) {
-        res.status(500).json({
-            message: error.message
-        });
     }
-});
 
-router.get("/all", async (req, res) => {
-    try {
+    catch (error) {
+
+        res.status(500).json({
+
+            message: error.message
+
+        });
+
+    }
+
+});
+        router.get("/all", async (req, res) => {
+     try {
 
         const profiles = await Profile.find()
             .sort({ createdAt: -1 });

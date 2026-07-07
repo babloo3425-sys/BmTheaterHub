@@ -1,3 +1,7 @@
+const isEditMode =
+    new URLSearchParams(window.location.search)
+        .get("edit") === "true";
+
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -10,6 +14,62 @@ const createBtn =
     document.getElementById("createBtn");
 
 createBtn.addEventListener("click", createProfile);
+
+async function loadProfileForEdit() {
+
+    if (!isEditMode) return;
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5002/api/profile/me",
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
+        );
+
+        const profile = await response.json();
+
+        document.getElementById("name").value =
+            profile.name || "";
+
+        document.getElementById("profileType").value =
+            profile.profileType || "";
+
+        document.getElementById("city").value =
+            profile.city || "";
+
+        document.getElementById("state").value =
+            profile.state || "";
+
+        document.getElementById("experience").value =
+            profile.experience || "";
+
+        document.getElementById("about").value =
+            profile.about || "";
+
+        document.getElementById("whatsapp").value =
+            profile.whatsapp || "";
+
+        document.getElementById("pageTitle").textContent =
+          "Edit Profile";
+
+        document.getElementById("pageSubtitle").textContent =
+           "Update your theater profile";
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+    }
+
+}
+
+loadProfileForEdit();
 
 async function createProfile() {
 
@@ -52,57 +112,62 @@ async function createProfile() {
 
     try {
 
-        const response = await fetch(
-            "http://localhost:5002/api/profile/create",
-            {
-                method: "POST",
+    const url = isEditMode
+        ? "http://localhost:5002/api/profile/update"
+        : "http://localhost:5002/api/profile/create";
 
-                headers: {
+    const response = await fetch(url, {
 
-                    "Content-Type":"application/json",
+        method: isEditMode ? "PUT" : "POST",
 
-                    Authorization: token
+        headers: {
 
-                },
+            "Content-Type": "application/json",
 
-                body: JSON.stringify({
+            Authorization: token
 
-                    name,
-                    profileType,
-                    city,
-                    state,
-                    experience,
-                    about,
-                    whatsapp
+        },
 
-                })
+        body: JSON.stringify({
 
-            }
-        );
+            name,
+            profileType,
+            city,
+            state,
+            experience,
+            about,
+            whatsapp
 
-        const data = await response.json();
+        })
 
-        if(!response.ok){
+    });
 
-            alert(data.message);
+    const data = await response.json();
 
-            return;
+    if (!response.ok) {
 
-        }
+        alert(data.message);
 
-        alert("Profile Created Successfully");
-
-        window.location.href =
-            "dashboard.html";
+        return;
 
     }
 
-    catch(error){
+    alert(
+        isEditMode
+            ? "Profile Updated Successfully"
+            : "Profile Created Successfully"
+    );
 
-        console.log(error);
+    window.location.href = "dashboard.html";
 
-        alert("Server Error");
+}
 
-    }
+catch (error) {
+
+    console.log(error);
+
+    alert("Server Error");
+
+ }
 
 }

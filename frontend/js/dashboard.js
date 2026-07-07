@@ -122,3 +122,19 @@ async function uploadProfilePhoto() {
 }
 
 }
+
+    document
+    .getElementById("editProfileBtn")
+    .addEventListener("click", () => {
+
+        window.location.href = "create-profile.html?edit=true";
+
+    });
+
+    document
+    .getElementById("viewProfileBtn")
+    .addEventListener("click", () => {
+
+        window.location.href = "profile.html";
+
+    });
