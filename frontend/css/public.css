@@ -100,40 +100,255 @@ body{
 
 }
 
-.about{
+/* ===========================
+   About Section
+=========================== */
 
-    margin-top:30px;
+.about-box{
 
-    font-size:18px;
+    max-width: 850px;
+    
+    margin: 30px auto 0;
+
+    padding:22px;
+
+    background:#1b1f28;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    border-radius:18px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+}
+
+.about-box h3{
+
+    color:#d4af37;
+
+    font-size:22px;
+
+    margin-bottom:15px;
+
+}
+
+.about-box p{
+
+    color:#d7d7d7;
+
+    font-size:17px;
 
     line-height:1.8;
 
-    color:#ddd;
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+}
+/* ===========================
+   Action Buttons
+=========================== */
+
+.action-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.action-btn{
+
+    flex:1;
+
+    min-width:180px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#d4af37;
+
+    color:#000;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.3s;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+
+}
+
+.action-btn:hover{
+
+    transform:translateY(-3px);
+
+    background:#e6bf43;
 
 }
 
 .whatsapp-btn{
 
-    display:inline-block;
-
-    margin-top:30px;
-
-    padding:14px 28px;
-
     background:#25D366;
 
     color:#fff;
-
-    text-decoration:none;
-
-    border-radius:12px;
-
-    font-weight:bold;
 
 }
 
 .whatsapp-btn:hover{
 
-    opacity:.9;
+    background:#1ebe5d;
+
+}
+
+/* =========================================
+   Artist Portfolio
+========================================= */
+
+.portfolio-section{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.portfolio-btn{
+
+    width:250px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#d4af37;
+
+    color:#000;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.portfolio-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* =========================================
+   Artist Portfolio Title
+========================================= */
+
+.portfolio-title{
+
+    margin-top:30px;
+
+    margin-bottom:18px;
+
+    color:#d4af37;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    text-align:left;
+
+}
+
+/* =========================================
+   Mobile Responsive
+========================================= */
+
+@media (max-width:768px){
+
+    .public-profile{
+
+        padding:15px;
+
+        margin:20px auto;
+
+    }
+
+    .profile-card{
+
+        padding:20px;
+
+    }
+
+    .profile-header{
+
+        flex-direction:column;
+
+        align-items:center;
+
+        text-align:center;
+
+        gap:20px;
+
+    }
+
+    .profile-image{
+
+        width:140px;
+
+        height:140px;
+
+    }
+
+    .profile-details{
+
+        width:100%;
+
+    }
+
+    .profile-details h1{
+
+        font-size:34px;
+
+        line-height:1.2;
+
+        word-break:break-word;
+
+    }
+
+    .info{
+
+        font-size:18px;
+
+    }
 
 }

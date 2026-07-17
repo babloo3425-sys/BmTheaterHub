@@ -78,11 +78,65 @@ body{
 }
 
 .auth-link{
-    margin-top:20px;
+
+    margin-top:25px;
+
     text-align:center;
+
+    color:#ffffff;
+
+    font-size:18px;
+
 }
 
 .auth-link a{
+
     color:#d4af37;
+
     text-decoration:none;
+
+    font-weight:700;
+
+}
+
+.auth-link a:hover{
+
+    color:#f4d03f;
+
+    text-decoration:underline;
+
+}
+
+/* =========================================
+   Forgot Password
+========================================= */
+
+.forgot-password{
+
+    margin-top:16px;
+
+    text-align:center;
+
+}
+
+.forgot-password a{
+
+    color:#d4af37;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.forgot-password a:hover{
+
+    color:#f4d03f;
+
+    text-decoration:underline;
+
 }

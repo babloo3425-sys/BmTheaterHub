@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>BMTheaterHub Admin</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>BMTheaterHub Admin Dashboard</h1>
+
+    </header>
+
+     <div class="admin-header-actions">
+
+    <button id="refreshDashboardBtn">
+
+        🔄 Refresh
+
+    </button>
+
+</div>
+
+    <main>
+
+        <section id="stats">
+
+            <div id="totalUsers">Users : 0</div>
+
+            <div id="totalArtists">Artists : 0</div>
+
+            <div id="featuredArtists">Featured : 0</div>
+
+            <div id="verifiedArtists">Verified : 0</div>
+
+            <div id="blockedArtists">Blocked : 0</div>
+
+        </section>
+
+         <!-- =========================================
+     Artist Management
+========================================= -->
+
+<section id="artistManagement">
+
+    <h2>Artist Management</h2>
+
+    <input
+        type="text"
+        id="searchArtist"
+        placeholder="Search artist..."
+    >
+
+    <table id="artistTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Photo</th>
+
+                <th>Name</th>
+
+                <th>Category</th>
+
+                <th>Verified</th>
+
+                <th>Featured</th>
+
+                <th>Blocked</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="artistTableBody">
+
+        </tbody>
+
+    </table>
+
+</section>
+
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

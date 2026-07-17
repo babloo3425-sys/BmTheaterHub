@@ -1,0 +1,449 @@
+/* =====================================================
+   BMTheaterHub
+   Admin Dashboard
+   ===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+
+    background:#f3f4f6;
+
+    color:#111827;
+
+}
+
+/* =====================================================
+   Header
+   ===================================================== */
+
+header{
+
+    background:#111827;
+
+    color:#fff;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.15);
+
+}
+
+header h1{
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+/* =====================================================
+   Main
+   ===================================================== */
+
+main{
+
+    width:95%;
+
+    max-width:1200px;
+
+    margin:30px auto;
+
+}
+
+/* =====================================================
+   Statistics Cards
+   ===================================================== */
+
+#stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+#stats div{
+
+    background:#fff;
+
+    padding:30px 20px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+    cursor:default;
+
+}
+
+#stats div:hover{
+
+    transform:translateY(-5px);
+
+}
+
+/* =========================================
+   Artist Management
+========================================= */
+
+#artistManagement{
+
+    margin-top:40px;
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+}
+
+#artistManagement h2{
+
+    margin-bottom:20px;
+
+}
+
+#searchArtist{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:8px;
+
+    margin-bottom:20px;
+
+    font-size:16px;
+
+}
+
+#artistTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+#artistTable th{
+
+    background:#111827;
+
+    color:#fff;
+
+    padding:14px;
+
+    text-align:left;
+
+}
+
+#artistTable td{
+
+    padding:14px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    vertical-align:middle;
+
+}
+
+#artistTable tbody tr:hover{
+
+    background:#f9fafb;
+
+}
+
+#artistTable img{
+
+    width:55px;
+
+    height:55px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+}
+
+/* =========================================
+   Action Buttons
+========================================= */
+
+.action-buttons{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+}
+
+.action-buttons button{
+
+    border:none;
+
+    border-radius:6px;
+
+    padding:8px 12px;
+
+    color:#fff;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.verify-btn{
+
+    background:#16a34a;
+
+}
+
+.feature-btn{
+
+    background:#f59e0b;
+
+}
+
+.block-btn{
+
+    background:#dc2626;
+
+}
+
+.action-buttons button:hover{
+
+    opacity:.9;
+
+    transform:translateY(-2px);
+
+}
+
+/* =========================================
+   Status Badges
+========================================= */
+
+.status{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status-verified{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+}
+
+.status-featured{
+
+    background:#fef3c7;
+
+    color:#92400e;
+
+}
+
+.status-blocked{
+
+    background:#fee2e2;
+
+    color:#991b1b;
+
+}
+
+.status-normal{
+
+    background:#f3f4f6;
+
+    color:#4b5563;
+
+}
+
+/* =========================================
+   Active Action Button
+========================================= */
+
+.active-btn{
+
+    opacity:.45;
+
+}
+
+/* =========================================
+   Header Actions
+========================================= */
+
+.admin-header-actions{
+
+    margin-top:15px;
+
+}
+
+#refreshDashboardBtn{
+
+    border:none;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+#refreshDashboardBtn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.view-btn{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+/* =========================================
+   Deactivate Button
+========================================= */
+
+.deactivate-btn{
+
+    background:#6b7280;
+
+    color:#fff;
+
+}
+
+.deactivate-btn:hover{
+
+    background:#4b5563;
+
+}
+
+/* =========================================
+   Mobile Responsive
+========================================= */
+
+@media (max-width:768px){
+
+    main{
+
+        width:100%;
+
+        padding:15px;
+
+        margin:20px auto;
+
+    }
+
+    header h1{
+
+        font-size:22px;
+
+    }
+
+    #stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #artistManagement{
+
+        padding:18px;
+
+    }
+
+    #artistManagement h2{
+
+        font-size:20px;
+
+    }
+
+    #searchArtist{
+
+        font-size:16px;
+
+    }
+
+    #artistTable{
+
+        display:block;
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+    }
+
+    #artistTable th,
+
+    #artistTable td{
+
+        padding:12px;
+
+        font-size:15px;
+
+    }
+
+    .action-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .action-buttons button{
+
+        width:100%;
+
+    }
+
+}

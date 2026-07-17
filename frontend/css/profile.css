@@ -41,6 +41,58 @@ body{
     margin-bottom:8px;
 }
 
+/* ===========================
+   Badges
+=========================== */
+
+.badge-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:15px;
+
+}
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+.featured-badge{
+
+    background:#d4af37;
+
+    color:#000;
+
+}
+
+.verified-badge{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
 .profile-card p{
 
     text-align:center;
@@ -138,3 +190,4 @@ body{
 }
 
 }
+

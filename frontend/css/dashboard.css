@@ -52,15 +52,6 @@ body{
     justify-content:center;
 }
 
-.profile-header{
-
-    display:flex;
-    align-items:center;
-    gap:20px;
-
-    margin-bottom:25px;
-}
-
 .profile-card{
 
     width:100%;
@@ -205,19 +196,21 @@ body{
 
 .button-group{
 
-    display:flex;
+    display:grid;
 
-    gap:15px;
+    grid-template-columns:repeat(4,1fr);
 
-    margin-top:25px;
+    gap:16px;
+
+    margin-top:30px;
 
 }
 
 .edit-btn{
 
-    flex:1;
+    width:100%;
 
-    height:64px;
+    height:60px;
 
     border:none;
 
@@ -237,15 +230,134 @@ body{
 
 }
 
-#viewProfileBtn{
-
-    margin-left:0;
-
-}
-
 .edit-btn:hover{
 
     transform:translateY(-2px);
+
+}
+
+.video-btn{
+
+    width:100%;
+
+    margin-top:15px;
+
+}
+
+.video-section{
+
+    margin-top:20px;
+
+}
+
+#videoStatus{
+
+    margin-top:12px;
+
+    text-align:center;
+
+    font-size:18px;
+
+    color:#d9d9d9;
+
+}
+
+/* =========================================
+   Profile Completion
+========================================= */
+.profile-completion{
+
+    width:260px;
+
+    padding:16px;
+
+    background:#1f2937;
+
+    border-radius:14px;
+
+    flex-shrink:0;
+
+}
+
+.profile-completion h3{
+
+    color:#d4af37;
+
+    margin-bottom:14px;
+
+    font-size:20px;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:12px;
+
+    background:#374151;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:#22c55e;
+
+    border-radius:50px;
+
+    transition:width .5s ease;
+
+}
+
+#progressText{
+
+    margin-top:12px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#fff;
+
+}
+
+.name-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:24px;
+
+}
+
+@media(max-width:900px){
+
+    .button-group{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .button-group{
+
+        grid-template-columns:1fr;
+
+    }
 
 }
 @media (max-width:768px){
@@ -350,4 +462,161 @@ body{
 
 }
 
+.profile-header{
+
+    position:relative;
+
 }
+
+.name-top{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.profile-completion{
+
+    width:calc(100% - 20px);
+
+    max-width:320px;
+
+    margin:0 auto;
+
+    box-sizing:border-box;
+
+}
+
+.topbar{
+
+    height:auto;
+
+    padding:12px 15px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+.topbar h2{
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:18px;
+
+    margin:0;
+
+}
+
+#adminPanelBtn,
+#logoutBtn{
+
+    margin:0;
+
+    padding:10px 16px;
+
+    font-size:15px;
+
+}
+
+}
+
+/* =========================================
+   Admin Button
+========================================= */
+
+#adminPanelBtn{
+
+    display:none;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    margin-right:12px;
+
+    font-weight:600;
+
+}
+
+#adminPanelBtn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* =========================================
+   Toast Notification
+========================================= */
+
+.toast{
+
+    position:fixed;
+
+    top:25px;
+
+    right:25px;
+
+    min-width:320px;
+
+    padding:18px 24px;
+
+    border-radius:12px;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    opacity:0;
+
+    transform:translateY(-20px);
+
+    transition:.3s;
+
+    z-index:9999;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.toast.success{
+
+    background:#16a34a;
+
+}
+
+.toast.error{
+
+    background:#dc2626;
+
+}
+
+

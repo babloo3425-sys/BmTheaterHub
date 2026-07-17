@@ -1,5 +1,4 @@
 const cloudinary = require("cloudinary").v2;
-
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 cloudinary.config({
@@ -12,7 +11,11 @@ cloudinary.config({
 
 });
 
-const storage = new CloudinaryStorage({
+/* =========================================================
+   Profile Image Storage
+========================================================= */
+
+const profileImageStorage = new CloudinaryStorage({
 
     cloudinary,
 
@@ -26,10 +29,54 @@ const storage = new CloudinaryStorage({
 
 });
 
+/* =========================================================
+   Resume Storage
+========================================================= */
+
+const resumeStorage = new CloudinaryStorage({
+
+    cloudinary,
+
+    params: {
+
+        folder: "BmTheaterHub/Resumes",
+
+        resource_type: "raw",
+
+        allowed_formats: ["pdf"]
+
+    }
+
+});
+
+/* =========================================================
+   Performance Video Storage
+========================================================= */
+
+const videoStorage = new CloudinaryStorage({
+
+    cloudinary,
+
+    params: {
+
+        folder: "BmTheaterHub/PerformanceVideos",
+
+        resource_type: "video",
+
+        allowed_formats: ["mp4", "mov", "webm"]
+
+    }
+
+});
+
 module.exports = {
 
     cloudinary,
 
-    storage
+    profileImageStorage,
+
+    resumeStorage,
+
+    videoStorage
 
 };

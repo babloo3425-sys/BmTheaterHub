@@ -38,8 +38,13 @@ router.get("/me", auth, async (req, res) => {
     try {
 
         const profile = await Profile.findOne({
-            userId: req.user.userId
-        });
+        userId: req.user.userId
+    });
+
+        const User = require("../models/User");
+
+        const user = await User.findById(req.user.userId)
+          .select("role");
 
         if (!profile) {
             return res.status(404).json({
@@ -47,7 +52,13 @@ router.get("/me", auth, async (req, res) => {
             });
         }
 
-        res.json(profile);
+        res.json({
+
+        ...profile.toObject(),
+
+         role: user.role
+
+        });
 
     } catch (error) {
         res.status(500).json({
@@ -116,18 +127,147 @@ router.put("/update", auth, async (req, res) => {
 
 });
         router.get("/all", async (req, res) => {
-     try {
 
-        const profiles = await Profile.find()
+    try {
+
+        const profiles = await Profile.find({
+              blocked: false,
+              active: true
+    })
+
+        .select(
+            "name profileType city state experience about whatsapp profileImage verified featured blocked createdAt"
+          )
+
             .sort({ createdAt: -1 });
 
-        res.json(profiles);
+        res.json({
 
-    } catch (error) {
-        res.status(500).json({
-            message: error.message
+            success: true,
+
+            count: profiles.length,
+
+            profiles
+
         });
+
     }
+
+    catch (error) {
+
+        res.status(500).json({
+
+            success: false,
+
+            message: error.message
+
+        });
+
+    }
+
+});
+
+        router.get("/search", async (req, res) => {
+
+    try {
+
+        const keyword = req.query.keyword || "";
+
+        const profiles = await Profile.find({
+
+              blocked: false,
+
+              $or: [
+
+                {
+                    name: {
+                        $regex: keyword,
+                        $options: "i"
+                    }
+                },
+
+                {
+                    profileType: {
+                        $regex: keyword,
+                        $options: "i"
+                    }
+                },
+
+                {
+                    city: {
+                        $regex: keyword,
+                        $options: "i"
+                    }
+                },
+
+                {
+                    state: {
+                        $regex: keyword,
+                        $options: "i"
+                    }
+                }
+
+            ]
+
+        }).sort({ createdAt: -1 });
+
+        res.json({
+
+            success: true,
+
+            profiles
+
+        });
+
+    }
+
+    catch (error) {
+
+        res.status(500).json({
+
+            success: false,
+
+            message: error.message
+
+        });
+
+    }
+
+});
+
+router.get("/:id", async (req, res) => {
+
+    try {
+
+        const profile = await Profile.findOne({
+              _id: req.params.id,
+              blocked: false
+         });
+
+        if (!profile) {
+
+            return res.status(404).json({
+
+               message: "Artist profile not available."
+
+            });
+
+        }
+
+        res.json(profile);
+
+    }
+
+    catch(error){
+
+        res.status(500).json({
+
+            message: error.message
+
+        });
+
+    }
+
 });
 
 module.exports = router;

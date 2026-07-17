@@ -48,14 +48,24 @@ async function login() {
         }
 
         localStorage.setItem(
-            "token",
-            data.token
-        );
+        "token",
+        data.token
+      );
 
-        alert("Login Successful");
+         alert("Login Successful");
+
+        if(data.user.role === "admin"){
 
         window.location.href =
-        "create-profile.html";
+        "admin.html";
+
+      }
+        else{
+
+         window.location.href =
+         "create-profile.html";
+
+    }
 
     } catch (error) {
 

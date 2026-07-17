@@ -35,13 +35,72 @@ const profileSchema = new mongoose.Schema(
     whatsapp: String,
 
     profileImage: {
-      type: String,
-      default: ""
-    }
+    type: String,
+    default: ""
   },
-  {
+
+    featured: {
+    type: Boolean,
+    default: false
+  },
+
+    verified: {
+    type: Boolean,
+    default: false
+ },
+
+  
+
+    // ======================================
+   //  Admin Block Status
+   //  Used to hide/block an artist profile
+   // ======================================
+      blocked: {
+      type: Boolean,
+      default: false
+},
+
+    // ======================================
+   // Profile Active Status
+  // Admin can deactivate / activate artist
+ // ======================================
+
+    active: {
+
+    type: Boolean,
+
+    default: true
+
+},
+
+   // ======================================
+  // Resume PDF
+ // ======================================
+
+    resume: {
+
+    type: String,
+
+    default: ""
+
+ },
+
+   // ======================================
+  //   Performance Video
+// ======================================
+
+    performanceVideo: {
+
+    type: String,
+
+    default: ""
+
+}
+
+  },
+ {
     timestamps: true
   }
-);
+ );
 
 module.exports = mongoose.model("Profile", profileSchema);

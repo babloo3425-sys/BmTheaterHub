@@ -3,16 +3,18 @@ const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
 
-// =========================
+// =====================================================
 // Load Environment Variables FIRST
-// =========================
+// =====================================================
 dotenv.config({
     path: path.join(__dirname, ".env")
 });
 
-// =========================
+// =====================================================
 // Debug (Temporary)
-// =========================
+// NOTE:
+// Publish se pehle ye console.log remove kar denge.
+// =====================================================
 console.log(process.env.MONGO_URI);
 
 console.log("Cloud Name:", process.env.CLOUDINARY_CLOUD_NAME);
@@ -22,42 +24,68 @@ console.log(
     process.env.CLOUDINARY_API_SECRET ? "Loaded" : "Missing"
 );
 
-// =========================
-// Import After dotenv
-// =========================
+// =====================================================
+// Import Database
+// =====================================================
 const connectDB = require("./config/db");
+
+// =====================================================
+// Import Routes
+// =====================================================
 const authRoutes = require("./routes/auth");
 const profileRoutes = require("./routes/profile");
 const uploadRoutes = require("./routes/upload");
 
-// =========================
-// App
-// =========================
+// ===============================
+// Admin Routes (NEW)
+// ===============================
+const adminRoutes = require("./routes/admin");
+
+// =====================================================
+// Express App
+// =====================================================
 const app = express();
 
-// =========================
-// Database
-// =========================
+// =====================================================
+// Connect MongoDB
+// =====================================================
 connectDB();
 
-// =========================
-// Middleware
-// =========================
+// =====================================================
+// Global Middleware
+// =====================================================
 app.use(cors());
 app.use(express.json());
 
-// =========================
-// Routes
-// =========================
+// =====================================================
+// API Routes
+// =====================================================
+
+// Authentication
 app.use("/api/auth", authRoutes);
+
+// Profile APIs
 app.use("/api/profile", profileRoutes);
+
+// Upload APIs
 app.use("/api/upload", uploadRoutes);
 
-console.log("✅ Profile Routes Loaded");
+// ===============================
+// Admin APIs (NEW)
+// ===============================
+app.use("/api/admin", adminRoutes);
 
-// =========================
+app.use(
+    "/uploads",
+    express.static(path.join(__dirname, "uploads"))
+);
+
+console.log("✅ Profile Routes Loaded");
+console.log("✅ Admin Routes Loaded");
+
+// =====================================================
 // Home Route
-// =========================
+// =====================================================
 app.get("/", (req, res) => {
     res.json({
         app: "BmTheaterHub India",
@@ -65,9 +93,9 @@ app.get("/", (req, res) => {
     });
 });
 
-// =========================
+// =====================================================
 // Start Server
-// =========================
+// =====================================================
 const PORT = process.env.PORT || 5002;
 
 app.listen(PORT, () => {

@@ -1,19 +1,22 @@
-const token = "Bearer " + localStorage.getItem("token");
+const params = new URLSearchParams(window.location.search);
+
+const profileId = params.get("id");
 
 async function loadPublicProfile() {
 
     try {
 
         const response = await fetch(
-            "http://localhost:5002/api/profile/me",
-            {
-                headers: {
-                    Authorization: token
-                }
-            }
+
+            `http://localhost:5002/api/profile/${profileId}`
+
         );
 
+            console.log(response.status);
+
         const profile = await response.json();
+
+        console.log(profile);
 
         document.getElementById("name").textContent =
             profile.name;
@@ -22,7 +25,7 @@ async function loadPublicProfile() {
             "🎭 " + profile.profileType;
 
         document.getElementById("city").textContent =
-            "📍 " + profile.city;
+            "📍 " + profile.city + ", " + profile.state;
 
         document.getElementById("experience").textContent =
             "⭐ " + profile.experience;
@@ -37,14 +40,174 @@ async function loadPublicProfile() {
         document.getElementById("whatsappBtn").href =
             "https://wa.me/91" + profile.whatsapp;
 
+        /* =========================================
+              Resume Button
+    ========================================= */
+
+        const viewResumeBtn =
+        document.getElementById("viewResumeBtn");
+
+        if(profile.resume){
+
+        viewResumeBtn.style.display =
+        "inline-block";
+
+        viewResumeBtn.onclick = () => {
+
+        const previewUrl =
+        "https://docs.google.com/gview?embedded=1&url=" +
+        encodeURIComponent(profile.resume);
+
+        window.open(previewUrl, "_blank");
+
+    };
+
+    }
+       else{
+
+        viewResumeBtn.style.display =
+        "none";
+
     }
 
-    catch(error){
+    /* =========================================
+          Performance Video Button
+       ========================================= */
+
+        const viewPerformanceBtn =
+        document.getElementById("viewPerformanceBtn");
+
+        if(profile.performanceVideo){
+
+        viewPerformanceBtn.style.display =
+         "inline-block";
+
+        viewPerformanceBtn.onclick = () => {
+
+        window.open(
+            profile.performanceVideo,
+            "_blank"
+        );
+
+    };
+
+    }
+       else{
+
+        viewPerformanceBtn.style.display =
+        "none";
+
+    }
+
+
+        /* ===========================
+               Badges
+         =========================== */
+
+         const featuredBadge =
+         document.getElementById("featuredBadge");
+
+         const verifiedBadge =
+         document.getElementById("verifiedBadge");
+
+         if (profile.featured === true) {
+
+         featuredBadge.style.display = "inline-flex";
+
+        } else {
+
+            featuredBadge.style.display = "none";
+
+        }
+
+            if (profile.verified === true) {
+
+           verifiedBadge.style.display = "inline-flex";
+
+         } else {
+
+            verifiedBadge.style.display = "none";
+
+         }
+
+        }
+
+            catch(error){
+
+            console.log(error);
+
+         }
+
+      }
+
+          loadPublicProfile();
+
+          /* ===========================
+                 Share Profile
+             =========================== */
+
+          const shareProfileBtn =
+          document.getElementById("shareProfileBtn");
+
+          shareProfileBtn.addEventListener("click", async () => {
+
+          if (navigator.share) {
+ 
+          try {
+
+            await navigator.share({
+
+                title: document.getElementById("name").textContent,
+
+                text: "Check out this artist on BM TheaterHub",
+
+                url: window.location.href
+
+            });
+
+         }
+
+         catch(error){
+
+            console.log(error);
+
+         }
+
+        }
+
+           else{
+
+            alert("Sharing is not supported on this device.");
+
+         }
+
+       });
+
+         /* ===========================
+                Copy Profile Link
+            =========================== */
+
+       const copyLinkBtn =
+        document.getElementById("copyLinkBtn");
+
+        copyLinkBtn.addEventListener("click", async () => {
+
+      try{
+
+        await navigator.clipboard.writeText(
+
+            window.location.href
+
+        );
+
+        alert("Profile link copied successfully.");
+
+      }
+
+      catch(error){
 
         console.log(error);
 
-    }
+     }
 
-}
-
-loadPublicProfile();
+});

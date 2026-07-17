@@ -13,6 +13,15 @@
 
         <h2>🎭 BmTheaterHub</h2>
 
+    <button
+
+       id="adminPanelBtn"
+       style="display:none;">
+
+       🛡️ Admin Panel
+
+</button>
+
         <button id="logoutBtn">
             Logout
         </button>
@@ -36,7 +45,7 @@
         📷
     </button>
 
-</div>
+    </div>
 
 <input
     type="file"
@@ -46,17 +55,43 @@
 
     <div class="profile-info">
 
+    <div class="name-top">
+
         <h1 id="name"></h1>
 
-        <div class="badge-row">
+        <div class="profile-completion">
 
-            <span id="verifiedBadge">
-                ⭐ Verified
-            </span>
+            <h3>Profile Completion</h3>
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+
+                </div>
+
+            </div>
+
+            <p id="progressText">
+
+                0% Complete
+
+            </p>
 
         </div>
 
     </div>
+
+    <div class="badge-row">
+
+        <span id="verifiedBadge">
+            ⭐ Verified
+        </span>
+
+    </div>
+
+</div>
 
 </div>
 
@@ -70,22 +105,74 @@
 
            <p id="about"></p>
 
-            <div class="button-group">
+           <div class="resume-section">
 
-        <button id="editProfileBtn" class="edit-btn">
-            Edit Profile
-        </button>
+    <p id="resumeStatus">
+        📄 Resume : Not Uploaded
+    </p>
 
-        <button id="viewProfileBtn" class="edit-btn">
-           View Public Profile
-        </button>
+</div>
 
-         </div>
+<div class="button-group">
 
-        </div>
+    <button id="editProfileBtn" class="edit-btn">
+        Edit Profile
+    </button>
+
+    <button id="viewProfileBtn" class="edit-btn">
+        🌐 Preview Public Profile
+    </button>
+
+    <button
+        id="viewResumeBtn"
+        class="edit-btn"
+        style="display:none;">
+        📄 View Resume
+    </button>
+
+    <button id="uploadResumeBtn" class="edit-btn">
+        📄 Upload Resume
+    </button>
+
+ </div>
+
+    <input
+      type="file"
+      id="resumeInput"
+      accept=".pdf"
+      hidden>
+
+    <div class="video-section">
+
+    <button
+        id="videoBtn"
+        class="edit-btn video-btn">
+
+        🎬 Upload Performance Video
+
+    </button>
+
+    <p id="videoStatus">
+
+        🎬 Performance Video : Not Uploaded
+
+    </p>
+
+     </div>
+
+    <input
+      type="file"
+      id="performanceVideoInput"
+      accept="video/mp4,video/webm,video/quicktime"
+      hidden>
+
+      </div>
+
+     </div>
 
     </div>
 
+    <script src="js/toast.js"></script>
     <script src="js/dashboard.js"></script>
 
 </body>
