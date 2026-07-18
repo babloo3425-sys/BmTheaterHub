@@ -49,7 +49,7 @@ async function resetPassword(){
 
         const response = await fetch(
 
-            "http://localhost:5002/api/auth/reset-password",
+            `${API_BASE_URL}/api/auth/reset-password`,
 
             {
 

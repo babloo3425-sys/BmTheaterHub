@@ -23,7 +23,7 @@ async function checkAdminAccess(){
 
         const response = await fetch(
 
-            "http://localhost:5002/api/profile/me",
+            `${API_BASE_URL}/api/profile/me`,
 
             {
 
@@ -78,7 +78,7 @@ async function loadDashboard() {
     try {
 
         const response = await fetch(
-            "http://localhost:5002/api/admin/dashboard",
+            `${API_BASE_URL}/api/admin/dashboard`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -147,7 +147,7 @@ async function loadArtists() {
 
         const response = await fetch(
         
-        "http://localhost:5002/api/admin/artists",
+        `${API_BASE_URL}/api/admin/artists`,
     {
         headers: {
             Authorization: `Bearer ${token}`
@@ -275,7 +275,7 @@ async function verifyArtist(profileId){
 
         const response = await fetch(
 
-            `http://localhost:5002/api/admin/verify/${profileId}`,
+            `${API_BASE_URL}/api/admin/verify/${profileId}`,
 
             {
 
@@ -321,7 +321,7 @@ async function featureArtist(profileId){
 
         const response = await fetch(
 
-            `http://localhost:5002/api/admin/feature/${profileId}`,
+            `${API_BASE_URL}/api/admin/feature/${profileId}`,
 
             {
 
@@ -365,7 +365,7 @@ async function blockArtist(profileId){
 
         const response = await fetch(
 
-            `http://localhost:5002/api/admin/block/${profileId}`,
+            `${API_BASE_URL}/api/admin/block/${profileId}`,
 
             {
 
@@ -469,7 +469,7 @@ async function deactivateArtist(profileId){
 
         const response = await fetch(
 
-            `http://localhost:5002/api/admin/deactivate/${profileId}`,
+            `${API_BASE_URL}/api/admin/deactivate/${profileId}`,
 
             {
 

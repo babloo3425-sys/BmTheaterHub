@@ -126,7 +126,7 @@ async function loadArtists(){
     try{
 
         const response = await fetch(
-            "http://localhost:5002/api/profile/all"
+            `${API_BASE_URL}/api/profile/all`
         );
 
         const data = await response.json();

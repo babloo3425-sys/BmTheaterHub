@@ -24,8 +24,9 @@ async function signup() {
     try {
 
         const response = await fetch(
-            "http://localhost:5002/api/auth/signup",
-            {
+         `${API_BASE_URL}/api/auth/signup`,
+       
+         {
                 method: "POST",
 
                 headers: {

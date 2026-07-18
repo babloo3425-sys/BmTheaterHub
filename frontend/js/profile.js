@@ -8,8 +8,7 @@ async function loadPublicProfile() {
 
         const response = await fetch(
 
-            `http://localhost:5002/api/profile/${profileId}`
-
+            `${API_BASE_URL}/api/profile/${profileId}`
         );
 
             console.log(response.status);

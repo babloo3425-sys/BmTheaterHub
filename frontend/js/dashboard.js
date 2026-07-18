@@ -11,7 +11,7 @@ async function loadProfile() {
     try {
 
         const response = await fetch(
-            "http://localhost:5002/api/profile/me",
+            `${API_BASE_URL}/api/profile/me`,
             {
                 headers: {
                     Authorization: token
@@ -290,7 +290,7 @@ async function uploadProfilePhoto() {
 
     try {
 
-        const response = await fetch("http://localhost:5002/api/upload/profile-photo", {
+        const response = await fetch(`${API_BASE_URL}/api/upload/profile-photo`, {
 
             method: "POST",
 
@@ -407,7 +407,7 @@ async function uploadResume(){
 
         const response = await fetch(
 
-            "http://localhost:5002/api/upload/resume",
+            `${API_BASE_URL}/api/upload/resume`,
 
             {
 
@@ -508,7 +508,7 @@ if (file.size > 50 * 1024 * 1024) {
 
         const response = await fetch(
 
-            "http://localhost:5002/api/upload/performance-video",
+            `${API_BASE_URL}/api/upload/performance-video`,
 
             {
 

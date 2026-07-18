@@ -29,7 +29,7 @@ async function sendResetLink(){
 
         const response = await fetch(
 
-            "http://localhost:5002/api/auth/forgot-password",
+            `${API_BASE_URL}/api/auth/forgot-password`,
 
             {
 

@@ -22,7 +22,9 @@ async function loadProfileForEdit() {
     try {
 
         const response = await fetch(
-            "http://localhost:5002/api/profile/me",
+            
+            `${API_BASE_URL}/api/profile/me`,
+            
             {
                 headers: {
                     Authorization: token
@@ -113,8 +115,8 @@ async function createProfile() {
     try {
 
     const url = isEditMode
-        ? "http://localhost:5002/api/profile/update"
-        : "http://localhost:5002/api/profile/create";
+        ? `${API_BASE_URL}/api/profile/update`
+        : `${API_BASE_URL}/api/profile/create`;
 
     const response = await fetch(url, {
 
