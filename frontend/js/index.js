@@ -230,10 +230,13 @@ categoryCards.forEach(card => {
    Search
 =========================== */
 
-searchInput.addEventListener(
-    "input",
-    applyFilters
-);
+   searchInput.addEventListener("input", applyFilters);
+
+   searchInput.addEventListener("keyup", applyFilters);
+
+   searchInput.addEventListener("search", applyFilters);
+
+   searchInput.addEventListener("change", applyFilters);
 
 /* ===========================
    Category Dropdown
