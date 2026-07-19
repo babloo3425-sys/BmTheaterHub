@@ -84,7 +84,12 @@ function renderProfiles(profiles) {
 
 async function applyFilters() {
 
-    const keyword = document.getElementById("searchInput").value.trim();
+    const keyword =
+    document
+        .getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
 
     const category = document.getElementById("categoryFilter").value;
 
