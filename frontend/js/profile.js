@@ -141,46 +141,45 @@ async function loadPublicProfile() {
 
           loadPublicProfile();
 
-          /* ===========================
-                 Share Profile
-             =========================== */
+        /* ===========================
+             Share Profile
+         =========================== */
 
-          const shareProfileBtn =
-          document.getElementById("shareProfileBtn");
+        const shareProfileBtn = document.getElementById("shareProfileBtn");
 
-          shareProfileBtn.addEventListener("click", async () => {
+        shareProfileBtn.addEventListener("click", async () => {
 
-          if (navigator.share) {
- 
-          try {
+        const shareData = {
+        title: document.getElementById("name").textContent,
+        text: "Check out this artist on BM TheaterHub",
+        url: window.location.href
+    };
 
-            await navigator.share({
+    // Native Share
+    if (navigator.share) {
 
-                title: document.getElementById("name").textContent,
-
-                text: "Check out this artist on BM TheaterHub",
-
-                url: window.location.href
-
-            });
-
-         }
-
-         catch(error){
-
-            console.log(error);
-
-         }
-
+        try {
+            await navigator.share(shareData);
+            return;
+        } catch (err) {
+            console.log(err);
         }
+    }
 
-           else{
+    // Fallback
+    try {
 
-            alert("Sharing is not supported on this device.");
+        await navigator.clipboard.writeText(window.location.href);
 
-         }
+        alert("Profile link copied.\nNow paste it anywhere to share.");
 
-       });
+    } catch (err) {
+
+        prompt("Copy this profile link:", window.location.href);
+
+    }
+
+});
 
          /* ===========================
                 Copy Profile Link
