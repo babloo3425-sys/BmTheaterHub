@@ -155,6 +155,17 @@ async function loadPublicProfile() {
         url: window.location.href
     };
 
+         // Android App Native Share
+        if (window.Android && typeof window.Android.share === "function") {
+
+        window.Android.share(
+        shareData.title,
+        shareData.text,
+        shareData.url
+    );
+
+    return;
+}
     // Native Share
     if (navigator.share) {
 
