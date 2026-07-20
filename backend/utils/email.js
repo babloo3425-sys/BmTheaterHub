@@ -1,5 +1,7 @@
 const nodemailer = require("nodemailer");
 
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+
 const transporter = nodemailer.createTransport({
 
     host: "smtp-relay.brevo.com",
@@ -23,6 +25,20 @@ const transporter = nodemailer.createTransport({
     greetingTimeout: 30000,
 
     socketTimeout: 30000
+
+});
+
+transporter.verify(function (error, success) {
+
+    if (error) {
+
+        console.error("SMTP VERIFY ERROR:", error);
+
+    } else {
+
+        console.log("SMTP Server is ready.");
+
+    }
 
 });
 
