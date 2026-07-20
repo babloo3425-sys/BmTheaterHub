@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const User = require("../models/User");
-const transporter = require("../utils/email");
+const sendEmail = require("../utils/email");
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
@@ -183,9 +183,7 @@ router.post(
 
 `https://bm-theater-hub.vercel.app/reset-password.html?token=${resetToken}`;
 
-await transporter.sendMail({
-
-    from: `"BmTheaterHub" <${process.env.EMAIL_USER}>`,
+await sendEmail({
 
     to: user.email,
 
@@ -215,8 +213,7 @@ await transporter.sendMail({
 
     `
 
-});           
-
+});
             return res.json({
 
             success:true,
