@@ -183,7 +183,6 @@ router.post(
 
 `https://bm-theater-hub.vercel.app/reset-password.html?token=${resetToken}`;
 
-console.log("RESET EMAIL TO:", user.email);
 await sendEmail({
 
     to: user.email,

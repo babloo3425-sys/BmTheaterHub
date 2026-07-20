@@ -54,7 +54,6 @@ async function sendEmail({
 
         );
 
-        console.log("BREVO SUCCESS:", response.data);
         return response.data;
 
     }
