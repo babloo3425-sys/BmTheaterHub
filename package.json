@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "accepts": "^2.0.0",
+    "axios": "^1.18.1",
     "bcryptjs": "^3.0.3",
     "body-parser": "^2.3.0",
     "bytes": "^3.1.2",
@@ -81,10 +82,10 @@
     "wrappy": "^1.0.2"
   },
   "scripts": {
-  "start": "node backend/server.js",
-  "dev": "node backend/server.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
