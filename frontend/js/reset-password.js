@@ -81,6 +81,8 @@ async function resetPassword(){
 
         }
 
+        console.log("Reset API Success:", data);
+
         showToast(
 
             "Password reset successfully.",
@@ -88,6 +90,8 @@ async function resetPassword(){
             "success"
 
         );
+
+        console.log("Redirecting to login...");
 
         setTimeout(()=>{
 

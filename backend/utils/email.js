@@ -18,7 +18,7 @@ async function sendEmail({
 
                     name: "BMTheaterHub",
 
-                    email: "bblkumar8@gmail.com"
+                    email: "noreply@bmtheaterhub.com"
 
                 },
 
