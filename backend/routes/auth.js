@@ -190,29 +190,144 @@ await sendEmail({
     subject: "Reset Your BmTheaterHub Password",
 
     html: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
 
-        <h2>BmTheaterHub Password Reset</h2>
+<body style="margin:0;padding:0;background:#f4f6fb;font-family:Arial,Helvetica,sans-serif;">
 
-        <p>Hello ${user.name},</p>
+<table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 15px;">
+<tr>
+<td align="center">
 
-        <p>You requested to reset your password.</p>
+<table width="600" cellpadding="0" cellspacing="0"
+style="max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.08);">
 
-        <p>
+<tr>
+<td style="background:#5b3df5;padding:28px;text-align:center;">
 
-            <a href="${resetLink}">
+<h1 style="margin:0;color:#ffffff;font-size:28px;">
+🎭 BMTheaterHub
+</h1>
 
-                Click here to Reset Password
+<p style="margin:10px 0 0;color:#ece8ff;font-size:15px;">
+India's Theatre Marketplace
+</p>
 
-            </a>
+</td>
+</tr>
 
-        </p>
+<tr>
+<td style="padding:40px;">
 
-        <p>This link will expire in 30 minutes.</p>
+<h2 style="margin-top:0;color:#222;">
+Reset Your Password
+</h2>
 
-        <p>If you did not request this, please ignore this email.</p>
+<p style="font-size:16px;color:#555;line-height:1.8;">
+Hello <strong>${user.name}</strong>,
+</p>
 
-    `
+<p style="font-size:16px;color:#555;line-height:1.8;">
+We received a request to reset your
+BMTheaterHub account password.
+</p>
 
+<div style="text-align:center;margin:35px 0;">
+
+<a href="${resetLink}"
+
+style="
+background:#5b3df5;
+color:#ffffff;
+text-decoration:none;
+padding:16px 38px;
+display:inline-block;
+border-radius:8px;
+font-size:17px;
+font-weight:bold;">
+
+Reset Password
+
+</a>
+
+</div>
+
+<div style="
+background:#fff8e8;
+border-left:5px solid #ffb300;
+padding:18px;
+border-radius:8px;
+font-size:15px;
+color:#555;
+">
+
+⏰ This reset link will expire in
+<strong>30 minutes.</strong>
+
+</div>
+
+<p style="margin-top:30px;font-size:15px;color:#555;line-height:1.8;">
+
+If the button doesn't work, copy and paste this link into your browser:
+
+</p>
+
+<p style="
+word-break:break-all;
+font-size:13px;
+color:#5b3df5;
+">
+
+${resetLink}
+
+</p>
+
+<hr style="border:none;border-top:1px solid #eee;margin:35px 0;">
+
+<p style="font-size:14px;color:#777;line-height:1.8;">
+
+If you didn't request a password reset,
+you can safely ignore this email.
+Your password will remain unchanged.
+
+</p>
+
+</td>
+</tr>
+
+<tr>
+
+<td style="
+background:#fafafa;
+padding:25px;
+text-align:center;
+font-size:13px;
+color:#777;
+">
+
+© 2026 BMTheaterHub
+
+<br><br>
+
+www.bmtheaterhub.com
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+`
 });
             return res.json({
 
