@@ -181,7 +181,7 @@ router.post(
 
             const resetLink =
 
-`https://bm-theater-hub.vercel.app/reset-password.html?token=${resetToken}`;
+ `https://bmtheaterhub.com/reset-password.html?token=${resetToken}`;
 
 await sendEmail({
 
