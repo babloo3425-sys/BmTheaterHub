@@ -313,4 +313,104 @@ router.post(
 
 );
 
+    /*========================================================
+        Delete Performance Video
+    ========================================================*/
+
+router.delete(
+
+    "/performance-video",
+
+    auth,
+
+    async (req, res) => {
+
+        try {
+
+            const profile = await Profile.findOne({
+
+                userId: req.user.userId
+
+            });
+
+            if (!profile) {
+
+                return res.status(404).json({
+
+                    success: false,
+
+                    message: "Profile not found."
+
+                });
+
+            }
+
+            if (
+
+                !profile.performanceVideo ||
+
+                !profile.performanceVideo.publicId
+
+            ) {
+
+                return res.status(400).json({
+
+                    success: false,
+
+                    message: "Performance video not found."
+
+                });
+
+            }
+
+            await cloudinary.uploader.destroy(
+
+                profile.performanceVideo.publicId,
+
+                {
+
+                    resource_type: "video"
+
+                }
+
+            );
+
+            profile.performanceVideo = {
+
+                url: "",
+
+                publicId: ""
+
+            };
+
+            await profile.save();
+
+            return res.json({
+
+                success: true,
+
+                message: "Performance video deleted successfully."
+
+            });
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            return res.status(500).json({
+
+                success: false,
+
+                message: error.message
+
+            });
+
+        }
+
+    }
+
+);
+
 module.exports = router;
