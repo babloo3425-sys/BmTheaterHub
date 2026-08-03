@@ -13,7 +13,6 @@ const User = require("../models/User");
 const Profile = require("../models/Profile");
 
 const sendEmail = require("../utils/email");
-const User = require("../models/User");
 
 const router = express.Router();
 
