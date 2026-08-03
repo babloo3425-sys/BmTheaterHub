@@ -1,7 +1,7 @@
 const express = require("express");
 const Profile = require("../models/Profile");
 const auth = require("../middleware/auth");
-const sendEmail = require("../utils/sendEmail");
+const sendEmail = require("../utils/email");
 const User = require("../models/User");
 
 const router = express.Router();
