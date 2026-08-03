@@ -97,6 +97,12 @@ async function loadProfile() {
       const videoBtn =
       document.getElementById("videoBtn");
 
+      const replaceVideoBtn =
+      document.getElementById("replaceVideoBtn");
+
+      const deleteVideoBtn =
+      document.getElementById("deleteVideoBtn");
+
       if (
 
     profile.performanceVideo &&
@@ -106,6 +112,10 @@ async function loadProfile() {
 
     videoStatus.textContent =
     "🎬 Performance Video : Uploaded";
+
+    videoBtn.style.display = "inline-block";
+    replaceVideoBtn.style.display = "inline-block";
+    deleteVideoBtn.style.display = "inline-block";
 
     videoBtn.innerHTML =
     "▶ View Performance Video";
@@ -122,16 +132,111 @@ async function loadProfile() {
 
     };
 
+       replaceVideoBtn.onclick = () => {
+
+        performanceVideoInput.value = "";
+
+        performanceVideoInput.click();
+
+    };
+
+        deleteVideoBtn.onclick = async () => {
+
+        if(
+
+            !confirm(
+
+                "Delete your performance video?"
+
+            )
+
+        ){
+
+            return;
+
+        }
+
+        try{
+
+            const response = await fetch(
+
+                `${API_BASE_URL}/api/upload/performance-video`,
+
+                {
+
+                    method:"DELETE",
+
+                    headers:{
+
+                        Authorization:
+
+                        "Bearer " +
+
+                        localStorage.getItem("token")
+
+                    }
+
+                }
+
+            );
+
+            const data = await response.json();
+
+            if(!response.ok){
+
+                throw new Error(
+
+                    data.message
+
+                );
+
+            }
+
+            await loadProfile();
+
+            showToast(
+
+                "Performance video deleted successfully.",
+
+                "success"
+
+            );
+
+        }
+
+        catch(error){
+
+            console.error(error);
+
+            showToast(
+
+                error.message,
+
+                "error"
+
+            );
+
+        }
+
+    };
+
 }
-else{
 
-    videoStatus.textContent =
-    "🎬 Performance Video : Not Uploaded";
+    else{
 
-    videoBtn.innerHTML =
-    "🎬 Upload Performance Video";
+       videoStatus.textContent =
+       "🎬 Performance Video : Not Uploaded";
 
-    videoBtn.onclick = () => {
+       videoBtn.style.display = "inline-block";
+
+       replaceVideoBtn.style.display = "none";
+
+       deleteVideoBtn.style.display = "none";
+
+       videoBtn.innerHTML =
+       "🎬 Upload Performance Video";
+
+       videoBtn.onclick = () => {
 
         performanceVideoInput.value = "";
 
