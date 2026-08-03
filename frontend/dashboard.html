@@ -144,33 +144,53 @@
 
     <div class="video-section">
 
-    <button
-        id="videoBtn"
-        class="edit-btn video-btn">
+    <div class="video-actions">
 
-        🎬 Upload Performance Video
+        <button
+            id="videoBtn"
+            class="edit-btn video-btn">
 
-    </button>
+            ▶ View Performance Video
 
-    <p id="videoStatus">
+        </button>
 
-        🎬 Performance Video : Not Uploaded
+        <button
+            id="replaceVideoBtn"
+            class="edit-btn video-btn">
 
-    </p>
+            ✏ Replace Video
 
-     </div>
+        </button>
 
-    <input
-      type="file"
-      id="performanceVideoInput"
-      accept="video/mp4,video/webm,video/quicktime"
-      hidden>
+        <button
+            id="deleteVideoBtn"
+            class="edit-btn video-btn">
+
+            🗑 Delete Video
+
+        </button>
 
       </div>
 
-     </div>
+      <p id="videoStatus">
+
+        🎬 Performance Video : Not Uploaded
+
+      </p>
 
     </div>
+
+   <input
+    type="file"
+    id="performanceVideoInput"
+    accept="video/mp4,video/webm,video/quicktime"
+    hidden>
+
+      </div>
+
+    </div>
+
+  </div>
 
     <script src="js/config.js"></script>
     <script src="js/toast.js"></script>
