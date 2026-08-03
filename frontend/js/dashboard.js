@@ -97,25 +97,33 @@ async function loadProfile() {
       const videoBtn =
       document.getElementById("videoBtn");
 
-      if(profile.performanceVideo){
+      if (
 
-      videoStatus.textContent =
-        "🎬 Performance Video : Uploaded";
+    profile.performanceVideo &&
+    profile.performanceVideo.url
 
-      videoBtn.innerHTML =
-        "▶ View Performance Video";
+){
 
-      videoBtn.onclick = () => {
+    videoStatus.textContent =
+    "🎬 Performance Video : Uploaded";
+
+    videoBtn.innerHTML =
+    "▶ View Performance Video";
+
+    videoBtn.onclick = () => {
 
         window.open(
-            profile.performanceVideo,
+
+            profile.performanceVideo.url,
+
             "_blank"
+
         );
 
     };
 
-     }
-       else{
+}
+else{
 
     videoStatus.textContent =
     "🎬 Performance Video : Not Uploaded";
@@ -125,13 +133,13 @@ async function loadProfile() {
 
     videoBtn.onclick = () => {
 
-    performanceVideoInput.value = "";
+        performanceVideoInput.value = "";
 
-    performanceVideoInput.click();
+        performanceVideoInput.click();
 
     };
 
- }
+}
 
      /* =========================================
    Profile Completion

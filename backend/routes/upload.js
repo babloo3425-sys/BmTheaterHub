@@ -4,6 +4,7 @@ const multer = require("multer");
 const auth = require("../middleware/auth");
 
 const {
+    cloudinary,
     profileImageStorage,
     resumeStorage,
     videoStorage
@@ -221,6 +222,47 @@ router.post(
 
             });
 
+     /* ==========================================
+          Remove Previous Performance Video
+        ========================================== */
+
+     if (
+
+         profile.performanceVideo &&
+         profile.performanceVideo.publicId
+
+     ){
+
+     try{
+
+            await cloudinary.uploader.destroy(
+
+            profile.performanceVideo.publicId,
+
+            {
+
+                resource_type:"video"
+
+            }
+
+        );
+
+    }
+
+        catch(error){
+
+        console.error(
+
+            "Previous video delete failed:",
+
+            error
+
+        );
+
+    }
+
+}
+
             if (!profile) {
 
                 return res.status(404).json({
@@ -233,7 +275,10 @@ router.post(
 
             }
 
-            profile.performanceVideo = req.file.path;
+            profile.performanceVideo = {
+            url: req.file.path,
+            publicId: req.file.filename
+         };
 
             await profile.save();
 
@@ -243,7 +288,8 @@ router.post(
 
                 message: "Performance video uploaded successfully.",
 
-                video: profile.performanceVideo
+                video: profile.performanceVideo.url
+
 
             });
 

@@ -87,15 +87,27 @@ const profileSchema = new mongoose.Schema(
 
    // ======================================
   //   Performance Video
-// ======================================
+ // ======================================
 
-    performanceVideo: {
+      performanceVideo: {
 
-    type: String,
+        url: {
 
-    default: ""
+        type: String,
 
-}
+        default: ""
+
+    },
+
+        publicId: {
+
+        type: String,
+
+        default: ""
+
+    }
+
+ },
 
   },
  {
