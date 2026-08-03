@@ -209,12 +209,25 @@ style="max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden;box
 <tr>
 <td style="background:#5b3df5;padding:28px;text-align:center;">
 
-<h1 style="margin:0;color:#ffffff;font-size:28px;">
-🎭 BMTheaterHub
-</h1>
+<div style="text-align:center;">
 
-<p style="margin:10px 0 0;color:#ece8ff;font-size:15px;">
+<img
+src="https://bmtheaterhub.com/assets/logo.png"
+alt="BMTheaterHub"
+width="170"
+style="display:block;margin:0 auto;">
+
+</div>
+
+<p style="
+margin-top:15px;
+color:#ece8ff;
+font-size:15px;
+text-align:center;
+">
+
 India's Theatre Marketplace
+
 </p>
 
 </td>
