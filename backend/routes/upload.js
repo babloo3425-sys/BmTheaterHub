@@ -240,6 +240,106 @@ router.post(
 
 );
 
+/*========================================================
+        Delete Resume
+========================================================*/
+
+router.delete(
+
+    "/resume",
+
+    auth,
+
+    async (req, res) => {
+
+        try {
+
+            const profile = await Profile.findOne({
+
+                userId: req.user.userId
+
+            });
+
+            if (!profile) {
+
+                return res.status(404).json({
+
+                    success: false,
+
+                    message: "Profile not found."
+
+                });
+
+            }
+
+            if (
+
+                !profile.resume ||
+
+                !profile.resume.publicId
+
+            ) {
+
+                return res.status(400).json({
+
+                    success: false,
+
+                    message: "Resume not found."
+
+                });
+
+            }
+
+            await cloudinary.uploader.destroy(
+
+                profile.resume.publicId,
+
+                {
+
+                    resource_type: "raw"
+
+                }
+
+            );
+
+            profile.resume = {
+
+                url: "",
+
+                publicId: ""
+
+            };
+
+            await profile.save();
+
+            return res.json({
+
+                success: true,
+
+                message: "Resume deleted successfully."
+
+            });
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            return res.status(500).json({
+
+                success: false,
+
+                message: error.message
+
+            });
+
+        }
+
+    }
+
+);
+
    /*========================================================
             Upload Performance Video
     =========================================================*/
