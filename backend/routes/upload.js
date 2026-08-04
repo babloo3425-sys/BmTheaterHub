@@ -152,20 +152,74 @@ router.post(
 
             }
 
-            profile.resume = req.file.path;
+    /* 
+    ==========================================
+        Remove Previous Resume
+    ========================================== 
+    */
 
-            await profile.save();
+    if (
 
-            return res.json({
+      profile.resume &&
+      profile.resume.publicId
 
-                success: true,
+  ){
 
-                message: "Resume uploaded successfully.",
+    try{
 
-                resume: profile.resume
+        await cloudinary.uploader.destroy(
 
-            });
+            profile.resume.publicId,
 
+            {
+
+                resource_type: "raw"
+
+            }
+
+        );
+
+    }
+
+    catch(error){
+
+        console.error(
+
+            "Previous resume delete failed:",
+
+            error
+
+        );
+
+    }
+
+}
+
+/* 
+==========================================
+     Save New Resume
+==========================================
+ */
+
+    profile.resume = {
+
+    url: req.file.path,
+
+    publicId: req.file.filename
+
+ };
+
+    await profile.save();
+
+    return res.json({
+
+    success: true,
+
+    message: "Resume uploaded successfully.",
+
+    resume: profile.resume.url
+
+});
         }
 
         catch (error) {

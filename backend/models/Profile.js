@@ -73,17 +73,29 @@ const profileSchema = new mongoose.Schema(
 
 },
 
-   // ======================================
-  // Resume PDF
- // ======================================
+  // ======================================
+ //    Resume PDF
+// ======================================
 
     resume: {
 
-    type: String,
+    url: {
 
-    default: ""
+      type: String,
 
- },
+      default: ""
+
+    },
+
+    publicId: {
+
+      type: String,
+
+      default: ""
+
+    }
+
+},
 
    // ======================================
   //   Performance Video
