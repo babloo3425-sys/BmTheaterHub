@@ -60,6 +60,9 @@ async function loadProfile() {
         const viewResumeBtn =
         document.getElementById("viewResumeBtn");
 
+        const uploadResumeBtn =
+        document.getElementById("uploadResumeBtn");
+
         const replaceResumeBtn =
         document.getElementById("replaceResumeBtn");
 
@@ -354,13 +357,7 @@ document
     const changePhotoBtn = document.getElementById("changePhotoBtn");
 
     const profileImageInput = document.getElementById("profileImageInput");
-
-    /* =========================================
-           Resume Upload
-    ========================================= */
-
-    const uploadResumeBtn =
-    document.getElementById("uploadResumeBtn");
+    
 
    /* =========================================
           Performance Video Upload
