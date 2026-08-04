@@ -60,6 +60,12 @@ async function loadProfile() {
         const viewResumeBtn =
         document.getElementById("viewResumeBtn");
 
+        const replaceResumeBtn =
+        document.getElementById("replaceResumeBtn");
+
+        const deleteResumeBtn =
+        document.getElementById("deleteResumeBtn");
+
        if(profile.resume){
 
         resumeStatus.textContent =
@@ -541,26 +547,22 @@ async function uploadResume(){
 
         console.log("Status:", response.status);
 
-        const text = await response.text();
-
-        console.log(text);
-
-       return;
+        const data = await response.json();
 
         console.log(data);
 
         if(!response.ok){
 
-            throw new Error(data.message);
+        throw new Error(data.message);
 
-        }
+    }
+
+        await loadProfile();
 
         showToast(
-        "Resume uploaded successfully.",
+         "Resume uploaded successfully.",
          "success"
-     );
-
-        loadProfile();
+    );
 
     }
 
