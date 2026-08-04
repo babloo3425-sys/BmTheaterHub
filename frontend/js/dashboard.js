@@ -66,22 +66,35 @@ async function loadProfile() {
         const deleteResumeBtn =
         document.getElementById("deleteResumeBtn");
 
-       if(profile.resume){
+       if (
 
-        resumeStatus.textContent =
-          "📄 Resume : Uploaded";
+       profile.resume &&
+       profile.resume.url
+
+    ){
+
+       resumeStatus.textContent =
+       "📄 Resume : Uploaded";
 
        viewResumeBtn.style.display = "inline-block";
 
        viewResumeBtn.onclick = () => {
 
-    const previewUrl =
-        "https://docs.google.com/gview?embedded=1&url=" +
-        encodeURIComponent(profile.resume);
+        const previewUrl =
+            "https://docs.google.com/gview?embedded=1&url=" +
+            encodeURIComponent(profile.resume.url);
 
-    window.open(previewUrl, "_blank");
+        window.open(
 
-};
+            previewUrl,
+
+            "_blank"
+
+        );
+
+    };
+
+
 
     }
       else{
