@@ -368,13 +368,23 @@ if(profile.about){
 
 }
 
-if(profile.resume){
+if (
+
+    profile.resume &&
+    profile.resume.url
+
+){
 
     completed += 25;
 
 }
 
-if(profile.performanceVideo){
+if (
+
+    profile.performanceVideo &&
+    profile.performanceVideo.url
+
+){
 
     completed += 25;
 
