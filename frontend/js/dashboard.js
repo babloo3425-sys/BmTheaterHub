@@ -71,44 +71,126 @@ async function loadProfile() {
 
        if (
 
-       profile.resume &&
-       profile.resume.url
+    profile.resume &&
+    profile.resume.url
 
-    ){
+){
 
-       resumeStatus.textContent =
-       "📄 Resume : Uploaded";
+    resumeStatus.textContent =
+    "📄 Resume : Uploaded";
 
-       viewResumeBtn.style.display = "inline-block";
+    viewResumeBtn.style.display = "inline-block";
+    replaceResumeBtn.style.display = "inline-block";
+    deleteResumeBtn.style.display = "inline-block";
+    uploadResumeBtn.style.display = "none";
 
-       viewResumeBtn.onclick = () => {
+    viewResumeBtn.onclick = () => {
 
         const previewUrl =
             "https://docs.google.com/gview?embedded=1&url=" +
             encodeURIComponent(profile.resume.url);
 
-        window.open(
-
-            previewUrl,
-
-            "_blank"
-
-        );
+        window.open(previewUrl, "_blank");
 
     };
 
+    replaceResumeBtn.onclick = () => {
 
+        resumeInput.value = "";
 
-    }
-      else{
+        resumeInput.click();
 
-       resumeStatus.textContent =
-        "📄 Resume : Not Uploaded";
+    };
 
-       viewResumeBtn.style.display = "none";
+    deleteResumeBtn.onclick = async () => {
 
-   }
+        if(
 
+            !confirm(
+
+                "Delete your resume?"
+
+            )
+
+        ){
+
+            return;
+
+        }
+
+        try{
+
+            const response = await fetch(
+
+                `${API_BASE_URL}/api/upload/resume`,
+
+                {
+
+                    method:"DELETE",
+
+                    headers:{
+
+                        Authorization:
+
+                        "Bearer " +
+
+                        localStorage.getItem("token")
+
+                    }
+
+                }
+
+            );
+
+            const data = await response.json();
+
+            if(!response.ok){
+
+                throw new Error(data.message);
+
+            }
+
+            await loadProfile();
+
+            showToast(
+
+                "Resume deleted successfully.",
+
+                "success"
+
+            );
+
+        }
+
+        catch(error){
+
+            console.error(error);
+
+            showToast(
+
+                error.message,
+
+                "error"
+
+            );
+
+        }
+
+    };
+
+}
+
+else{
+
+    resumeStatus.textContent =
+    "📄 Resume : Not Uploaded";
+
+    viewResumeBtn.style.display = "none";
+    replaceResumeBtn.style.display = "none";
+    deleteResumeBtn.style.display = "none";
+    uploadResumeBtn.style.display = "inline-block";
+
+}
       /* =========================================
              Performance Video Status
       ========================================= */
