@@ -46,28 +46,44 @@ async function loadPublicProfile() {
         const viewResumeBtn =
         document.getElementById("viewResumeBtn");
 
-        if(profile.resume){
+    if (
 
-        viewResumeBtn.style.display =
-        "inline-block";
+        profile.resume &&
+        profile.resume.url
 
-        viewResumeBtn.onclick = () => {
+  ){
+
+       viewResumeBtn.style.display = "inline-block";
+
+       viewResumeBtn.onclick = () => {
 
         const previewUrl =
-        "https://docs.google.com/gview?embedded=1&url=" +
-        encodeURIComponent(profile.resume);
 
-        window.open(previewUrl, "_blank");
+        "https://docs.google.com/gview?embedded=1&url=" +
+
+        encodeURIComponent(
+
+            profile.resume.url
+
+        );
+
+        window.open(
+
+            previewUrl,
+
+            "_blank"
+
+        );
 
     };
 
-    }
-       else{
+ }
 
-        viewResumeBtn.style.display =
-        "none";
+    else{
 
-    }
+        viewResumeBtn.style.display = "none";
+
+ }
 
     /* =========================================
           Performance Video Button
@@ -76,27 +92,34 @@ async function loadPublicProfile() {
         const viewPerformanceBtn =
         document.getElementById("viewPerformanceBtn");
 
-        if(profile.performanceVideo){
+    if (
 
-        viewPerformanceBtn.style.display =
-         "inline-block";
+       profile.performanceVideo &&
+       profile.performanceVideo.url
 
-        viewPerformanceBtn.onclick = () => {
+  ){
+
+       viewPerformanceBtn.style.display = "inline-block";
+
+       viewPerformanceBtn.onclick = () => {
 
         window.open(
-            profile.performanceVideo,
+
+            profile.performanceVideo.url,
+
             "_blank"
+
         );
 
     };
 
-    }
-       else{
+ }
 
-        viewPerformanceBtn.style.display =
-        "none";
+    else{
 
-    }
+        viewPerformanceBtn.style.display = "none";
+
+ }
 
 
         /* ===========================
