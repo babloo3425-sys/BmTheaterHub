@@ -30,13 +30,17 @@ body{
 
 .profile-card{
 
-    background:#1a1d24;
+    background:linear-gradient(180deg,#1d222d 0%,#171b24 100%);
 
-    border:1px solid rgba(212,175,55,.2);
+    border:1px solid rgba(212,175,55,.22);
 
-    border-radius:24px;
+    border-radius:28px;
 
-    padding:35px;
+    padding:42px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.04);
 
 }
 
@@ -44,7 +48,7 @@ body{
 
     display:flex;
 
-    gap:30px;
+    gap:36px;
 
     align-items:flex-start;
 
@@ -54,17 +58,25 @@ body{
 
 .profile-image{
 
-    width:180px;
+    width:190px;
 
-    height:180px;
+    height:190px;
 
     border-radius:50%;
 
     overflow:hidden;
 
-    border:4px solid #d4af37;
-
     flex-shrink:0;
+
+    border:5px solid #d4af37;
+
+    box-shadow:
+
+        0 0 0 8px rgba(212,175,55,.08),
+
+        0 20px 40px rgba(0,0,0,.45);
+
+    background:#111;
 
 }
 
@@ -86,17 +98,35 @@ body{
 
 .profile-details h1{
 
-    font-size:46px;
+    font-size:48px;
 
-    margin-bottom:15px;
+    font-weight:700;
+
+    line-height:1.1;
+
+    letter-spacing:.3px;
+
+    margin-bottom:22px;
+
+    color:#fff;
 
 }
 
 .info{
 
-    font-size:22px;
+    display:flex;
 
-    margin:15px 0;
+    align-items:center;
+
+    gap:10px;
+
+    font-size:20px;
+
+    color:#d9d9d9;
+
+    margin:18px 0;
+
+    line-height:1.6;
 
 }
 
@@ -106,19 +136,21 @@ body{
 
 .about-box{
 
-    max-width: 850px;
-    
-    margin: 30px auto 0;
+    max-width:850px;
 
-    padding:22px;
+    margin:34px auto 0;
 
-    background:#1b1f28;
+    padding:30px;
 
-    border:1px solid rgba(212,175,55,.15);
+    background:linear-gradient(180deg,#202532,#1b2029);
 
-    border-radius:18px;
+    border:1px solid rgba(212,175,55,.18);
 
-    box-shadow:0 8px 25px rgba(0,0,0,.25);
+    border-radius:22px;
+
+    box-shadow:
+
+        0 16px 35px rgba(0,0,0,.35);
 
 }
 
@@ -126,19 +158,21 @@ body{
 
     color:#d4af37;
 
-    font-size:22px;
+    font-size:30px;
 
-    margin-bottom:15px;
+    margin-bottom:18px;
+
+    font-weight:700;
 
 }
 
 .about-box p{
 
-    color:#d7d7d7;
+    color:#d5d5d5;
 
-    font-size:17px;
+    font-size:18px;
 
-    line-height:1.8;
+    line-height:1.9;
 
     white-space:pre-wrap;
 
@@ -165,25 +199,23 @@ body{
 
     flex:1;
 
-    min-width:180px;
+    min-width:190px;
 
-    height:56px;
+    height:60px;
 
     border:none;
 
-    border-radius:14px;
+    border-radius:16px;
 
-    background:#d4af37;
+    background:linear-gradient(135deg,#d4af37,#f3d15d);
 
-    color:#000;
+    color:#111;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:700;
 
     cursor:pointer;
-
-    text-decoration:none;
 
     display:flex;
 
@@ -191,17 +223,23 @@ body{
 
     align-items:center;
 
+    text-decoration:none;
+
     transition:.3s;
 
-    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    box-shadow:
+
+        0 12px 25px rgba(212,175,55,.25);
 
 }
 
 .action-btn:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 
-    background:#e6bf43;
+    box-shadow:
+
+        0 18px 35px rgba(212,175,55,.35);
 
 }
 
@@ -225,15 +263,13 @@ body{
 
 .portfolio-section{
 
-    margin-top:30px;
+    margin-top:10px;
 
     display:flex;
 
+    gap:22px;
+
     justify-content:center;
-
-    align-items:center;
-
-    gap:18px;
 
     flex-wrap:wrap;
 
@@ -241,19 +277,19 @@ body{
 
 .portfolio-btn{
 
-    width:250px;
+    width:270px;
 
-    height:54px;
+    height:60px;
 
     border:none;
 
-    border-radius:14px;
+    border-radius:16px;
 
-    background:#d4af37;
+    background:linear-gradient(135deg,#d4af37,#f3d15d);
 
-    color:#000;
+    color:#111;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:700;
 
@@ -261,11 +297,19 @@ body{
 
     transition:.3s;
 
+    box-shadow:
+
+        0 12px 25px rgba(212,175,55,.25);
+
 }
 
 .portfolio-btn:hover{
 
-    transform:translateY(-2px);
+    transform:translateY(-4px);
+
+    box-shadow:
+
+        0 18px 35px rgba(212,175,55,.35);
 
 }
 
@@ -275,17 +319,15 @@ body{
 
 .portfolio-title{
 
-    margin-top:30px;
+    margin-top:40px;
 
-    margin-bottom:18px;
+    margin-bottom:22px;
 
     color:#d4af37;
 
-    font-size:24px;
+    font-size:30px;
 
     font-weight:700;
-
-    text-align:left;
 
 }
 
@@ -297,15 +339,17 @@ body{
 
     .public-profile{
 
-        padding:15px;
+        margin:18px auto;
 
-        margin:20px auto;
+        padding:14px;
 
     }
 
     .profile-card{
 
-        padding:20px;
+        padding:22px;
+
+        border-radius:22px;
 
     }
 
@@ -317,21 +361,15 @@ body{
 
         text-align:center;
 
-        gap:20px;
+        gap:24px;
 
     }
 
     .profile-image{
 
-        width:140px;
+        width:150px;
 
-        height:140px;
-
-    }
-
-    .profile-details{
-
-        width:100%;
+        height:150px;
 
     }
 
@@ -339,15 +377,47 @@ body{
 
         font-size:34px;
 
-        line-height:1.2;
-
-        word-break:break-word;
-
     }
 
     .info{
 
+        justify-content:center;
+
         font-size:18px;
+
+        margin:14px 0;
+
+    }
+
+    .about-box{
+
+        padding:22px;
+
+    }
+
+    .about-box h3{
+
+        font-size:24px;
+
+    }
+
+    .portfolio-title{
+
+        font-size:24px;
+
+    }
+
+    .portfolio-btn{
+
+        width:100%;
+
+    }
+
+    .action-btn{
+
+        width:100%;
+
+        min-width:100%;
 
     }
 
