@@ -12,9 +12,9 @@
 
 body{
 
-    background:#f3f4f6;
+    background:#0f1117;
 
-    color:#111827;
+    color:#f3f4f6;
 
 }
 
@@ -24,15 +24,17 @@ body{
 
 header{
 
-    background:#111827;
+    background:linear-gradient(180deg,#1b202b,#141821);
 
     color:#fff;
 
-    padding:20px;
+    padding:26px;
 
     text-align:center;
 
-    box-shadow:0 2px 10px rgba(0,0,0,.15);
+    border-bottom:1px solid rgba(212,175,55,.18);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
 
 }
 
@@ -50,11 +52,11 @@ header h1{
 
 main{
 
-    width:95%;
+    width:94%;
 
-    max-width:1200px;
+    max-width:1350px;
 
-    margin:30px auto;
+    margin:35px auto;
 
 }
 
@@ -72,31 +74,39 @@ main{
 
 }
 
-#stats div{
+#stats .stat-card{
 
-    background:#fff;
+    background:linear-gradient(180deg,#1d222d,#171b24);
 
-    padding:30px 20px;
+    border:1px solid rgba(212,175,55,.18);
 
-    border-radius:12px;
+    border-radius:18px;
+
+    padding:28px 20px;
 
     text-align:center;
 
-    font-size:22px;
+    transition:.3s;
 
-    font-weight:bold;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-
-    transition:.25s;
-
-    cursor:default;
+    box-shadow:0 12px 30px rgba(0,0,0,.28);
 
 }
 
-#stats div:hover{
+#stats .stat-card:hover{
 
     transform:translateY(-5px);
+
+    border-color:#d4af37;
+
+}
+
+.stat-icon{
+
+    display:block;
+
+    font-size:34px;
+
+    margin-bottom:14px;
 
 }
 
@@ -108,13 +118,15 @@ main{
 
     margin-top:40px;
 
-    background:#fff;
+    background:#1b202a;
 
-    padding:25px;
+    border:1px solid rgba(212,175,55,.18);
 
-    border-radius:12px;
+    padding:28px;
 
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    border-radius:18px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.30);
 
 }
 
@@ -128,15 +140,27 @@ main{
 
     width:100%;
 
-    padding:12px;
+    padding:14px 16px;
 
-    border:1px solid #d1d5db;
+    background:#10141d;
 
-    border-radius:8px;
+    color:#fff;
 
-    margin-bottom:20px;
+    border:1px solid rgba(212,175,55,.20);
+
+    border-radius:12px;
+
+    margin-bottom:22px;
 
     font-size:16px;
+
+    outline:none;
+
+}
+
+#searchArtist:focus{
+
+    border-color:#d4af37;
 
 }
 
@@ -152,27 +176,31 @@ main{
 
     background:#111827;
 
-    color:#fff;
+    color:#d4af37;
 
-    padding:14px;
+    padding:16px;
 
     text-align:left;
+
+    font-size:15px;
 
 }
 
 #artistTable td{
 
-    padding:14px;
+    padding:16px;
 
-    border-bottom:1px solid #e5e7eb;
+    border-bottom:1px solid rgba(255,255,255,.08);
 
     vertical-align:middle;
+
+    color:#f3f4f6;
 
 }
 
 #artistTable tbody tr:hover{
 
-    background:#f9fafb;
+    background:#222836;
 
 }
 
@@ -320,25 +348,27 @@ main{
 
     border:none;
 
-    background:#2563eb;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
 
     color:#fff;
 
-    padding:10px 18px;
+    padding:12px 22px;
 
-    border-radius:8px;
+    border-radius:12px;
 
     cursor:pointer;
 
     font-size:15px;
 
-    font-weight:600;
+    font-weight:700;
+
+    transition:.3s;
 
 }
 
 #refreshDashboardBtn:hover{
 
-    background:#1d4ed8;
+    transform:translateY(-2px);
 
 }
 
