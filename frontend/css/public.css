@@ -608,3 +608,85 @@ body{
     }
 
 }
+
+/* =========================================
+   Public Profile Premium Hero Polish
+========================================= */
+
+.profile-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.profile-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:5px;
+    background:linear-gradient(90deg,#d4af37,#f5d66c,#d4af37);
+}
+
+.profile-image{
+    transition:transform .35s ease, box-shadow .35s ease;
+}
+
+.profile-image:hover{
+    transform:scale(1.04);
+    box-shadow:
+        0 0 0 8px rgba(212,175,55,.10),
+        0 22px 45px rgba(0,0,0,.45);
+}
+
+.about-box{
+
+    transition:all .3s ease;
+
+}
+
+.about-box:hover{
+
+    border-color:rgba(212,175,55,.35);
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.40);
+
+}
+
+.portfolio-btn,
+.action-btn{
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+
+}
+
+.portfolio-btn:hover,
+.action-btn:hover{
+
+    transform:translateY(-3px);
+
+    filter:brightness(1.05);
+
+}
+
+@media (max-width:768px){
+
+    .profile-card::before{
+
+        height:4px;
+
+    }
+
+    .profile-image:hover{
+
+        transform:none;
+
+    }
+
+}
