@@ -591,6 +591,20 @@ body{
 
     align-items:center;
 
+    gap:8px;
+
 }
+
+    #profileType,
+    #city,
+    #experience{
+
+        margin:4px 0 !important;
+
+        padding:0;
+
+        line-height:1.35;
+
+    }
 
 }
