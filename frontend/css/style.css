@@ -89,19 +89,51 @@ header nav a:hover{
     font-weight:700;
     color:#d4af37;
 }
-.logo{
-    display:flex;
-    align-items:center;
-    gap:8px;
 
-    font-size:24px;
-    font-weight:700;
-    color:#d4af37;
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    text-decoration:none;
+
 }
 
-.logo-icon{
-    font-size:30px;
-    line-height:1;
+.logo-img{
+
+    width:48px;
+
+    height:48px;
+
+    object-fit:contain;
+
+    border-radius:10px;
+
+    transition:transform .3s ease;
+
+}
+
+.logo-img:hover{
+
+    transform:scale(1.08);
+
+}
+
+.logo-text{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#d4af37;
+
+    letter-spacing:.3px;
+
+    white-space:nowrap;
+
 }
 
 .login-btn {
@@ -437,81 +469,73 @@ header nav a:hover{
        Header
     ========================= */
 
-    header{
+   header,
+.header{
 
-        height:auto;
+    height:70px;
 
-        padding:12px 18px;
+    padding:0 16px;
 
-        display:flex;
+    display:flex;
 
-        flex-direction:column;
+    flex-direction:row;
 
-        align-items:center;
+    align-items:center;
 
-        gap:10px;
+    justify-content:space-between;
 
-    }
+    gap:12px;
 
-    .header{
+}
 
-        height:60px;
+.logo{
 
-        padding:0 15px;
+    display:flex;
 
-    }
+    align-items:center;
 
-    .header-logo{
+    gap:8px;
 
-        height:42px;
+}
 
-    }
+.logo-img{
 
-    .brand-name{
+    width:38px;
 
-        font-size:18px;
+    height:38px;
 
-    }
+}
 
-    .logo{
+.logo-text{
 
-        font-size:18px;
+    font-size:18px;
 
-        font-weight:700;
+}
+.header-logo{
 
-        text-align:center;
+    height:42px;
 
-    }
+}
 
-    header nav{
+.brand-name{
 
-        width:100%;
+    font-size:18px;
 
-        display:flex;
+}
 
-        justify-content:center;
+header nav{
 
-    }
+    width:auto;
 
-    header nav a{
+}
 
-        display:inline-block;
+header nav a{
 
-        padding:6px 14px;
+    padding:8px 14px;
 
-        background:#d4af37;
+    font-size:14px;
 
-        color:#11141d;
-
-        text-decoration:none;
-
-        border-radius:8px;
-
-        font-size:15px;
-
-        font-weight:600;
-
-    }
+}
 
     .login-btn{
 

@@ -34,70 +34,113 @@
 
     <main>
 
-        <section id="stats">
+    <section class="dashboard-title">
+
+        <h2>Dashboard Overview</h2>
+
+        <p>Manage artists, verification, featured profiles and platform statistics.</p>
+
+    </section>
+
+    <section id="stats" class="stats-grid">
+
+        <div class="stat-card">
+
+            <span class="stat-icon">👥</span>
 
             <div id="totalUsers">Users : 0</div>
 
+        </div>
+
+        <div class="stat-card">
+
+            <span class="stat-icon">🎭</span>
+
             <div id="totalArtists">Artists : 0</div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <span class="stat-icon">⭐</span>
 
             <div id="featuredArtists">Featured : 0</div>
 
+        </div>
+
+        <div class="stat-card">
+
+            <span class="stat-icon">✅</span>
+
             <div id="verifiedArtists">Verified : 0</div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <span class="stat-icon">🚫</span>
 
             <div id="blockedArtists">Blocked : 0</div>
 
-        </section>
+        </div>
 
-         <!-- =========================================
-     Artist Management
-========================================= -->
+    </section>
 
-<section id="artistManagement">
+    <!-- =========================================
+         Artist Management
+    ========================================= -->
 
-    <h2>Artist Management</h2>
+    <section id="artistManagement">
 
-    <input
-        type="text"
-        id="searchArtist"
-        placeholder="Search artist..."
-    >
+        <div class="section-header">
 
-    <table id="artistTable">
+            <h2>Artist Management</h2>
 
-        <thead>
+            <input
+                type="text"
+                id="searchArtist"
+                placeholder="🔍 Search artist by name..."
+            >
 
-            <tr>
+        </div>
 
-                <th>Photo</th>
+        <table id="artistTable">
 
-                <th>Name</th>
+            <thead>
 
-                <th>Category</th>
+                <tr>
 
-                <th>Verified</th>
+                    <th>Photo</th>
 
-                <th>Featured</th>
+                    <th>Name</th>
 
-                <th>Blocked</th>
+                    <th>Category</th>
 
-                <th>Actions</th>
+                    <th>Verified</th>
 
-            </tr>
+                    <th>Featured</th>
 
-        </thead>
+                    <th>Blocked</th>
 
-        <tbody id="artistTableBody">
+                    <th>Actions</th>
 
-        </tbody>
+                </tr>
 
-    </table>
+            </thead>
 
-</section>
+            <tbody id="artistTableBody">
 
-    </main>
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
 
     <script src="js/config.js"></script>
     <script src="js/admin.js"></script>
+
 </body>
 
 </html>
