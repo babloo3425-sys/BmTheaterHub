@@ -551,18 +551,46 @@ body{
 
     .profile-meta{
 
-        align-items:center;
+    width:100%;
 
-        text-align:center;
+    display:flex;
 
-    }
+    flex-direction:column;
 
-    .profile-type{
+    align-items:center;
 
-        width:100%;
+    gap:6px;
 
-        justify-content:center;
+    margin:10px 0 16px;
 
-    }
+}
+
+.profile-meta .info{
+
+    margin:0 !important;
+
+    padding:0;
+
+    line-height:1.35;
+
+}
+
+.profile-type{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+.profile-details{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
 
 }
