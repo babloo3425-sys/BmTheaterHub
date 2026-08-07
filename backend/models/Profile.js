@@ -15,18 +15,19 @@ const profileSchema = new mongoose.Schema(
     },
 
     profileType: {
-      type: String,
-      enum: [
-        "Drama Artist",
-        "Director",
-        "Theatre Group",
-        "Stage Decorator",
-        "Sound Engineer",
-        "Light Engineer",
-        "Theatre Trainer"
-      ],
-      required: true
-    },
+    type: String,
+    enum: [
+    "Drama Artist",
+    "Director",
+    "Theater Group",
+    "Stage Decorator",
+    "Sound Engineer",
+    "Background Music",
+    "Light Engineer",
+    "Theater Trainer"
+  ],
+  required: true
+},
 
     city: String,
     state: String,
