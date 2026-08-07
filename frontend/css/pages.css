@@ -1,0 +1,487 @@
+/* ==========================================================
+   BMTheaterHub
+   Legal Pages Design System
+   About | Privacy | Contact | Terms
+   ========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    background:#0f1117;
+
+    color:#e8e8e8;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================================
+   Header
+   ========================================================== */
+
+header{
+
+    height:78px;
+
+    padding:0 28px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#171b24;
+
+    border-bottom:1px solid rgba(212,175,55,.15);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.logo-img{
+
+    width:54px;
+
+    height:54px;
+
+    object-fit:contain;
+
+}
+
+.logo-text{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#d4af37;
+
+    letter-spacing:.4px;
+
+}
+
+header nav a{
+
+    text-decoration:none;
+
+    background:#d4af37;
+
+    color:#111;
+
+    padding:10px 20px;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.30s;
+
+}
+
+header nav a:hover{
+
+    background:#f0cb53;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   Main Page Container
+   ========================================================== */
+
+.page-container{
+
+    width:min(1100px,92%);
+
+    margin:70px auto;
+
+    background:#1a1f2b;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    border-radius:24px;
+
+    padding:55px;
+
+    box-shadow:
+
+    0 20px 60px rgba(0,0,0,.35);
+
+}
+
+/* ==========================================================
+   Hero Title
+   ========================================================== */
+
+.page-container h1{
+
+    font-size:48px;
+
+    color:#d4af37;
+
+    margin-bottom:25px;
+
+    font-weight:800;
+
+    text-align:center;
+
+}
+
+.page-container h2{
+
+    margin-top:45px;
+
+    margin-bottom:18px;
+
+    font-size:30px;
+
+    color:#f0cb53;
+
+}
+
+.page-container h3{
+
+    margin-top:28px;
+
+    margin-bottom:12px;
+
+    font-size:22px;
+
+    color:#ffffff;
+
+}
+
+.page-container p{
+
+    font-size:18px;
+
+    color:#d7d7d7;
+
+    margin-bottom:18px;
+
+    text-align:justify;
+
+}
+
+/* ==========================================================
+   Glass Section Card
+   ========================================================== */
+
+.page-section{
+
+    margin-top:35px;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(212,175,55,.12);
+
+    backdrop-filter:blur(12px);
+
+    transition:.35s;
+
+}
+
+.page-section:hover{
+
+    border-color:rgba(212,175,55,.30);
+
+    transform:translateY(-4px);
+
+}
+
+/* ==========================================================
+   Lists
+   ========================================================== */
+
+.page-container ul{
+
+    margin-top:18px;
+
+    padding-left:22px;
+
+}
+
+.page-container li{
+
+    margin-bottom:14px;
+
+    color:#d7d7d7;
+
+    font-size:17px;
+
+}
+
+/* ==========================================================
+   Highlight
+   ========================================================== */
+
+.highlight{
+
+    color:#d4af37;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   Divider
+   ========================================================== */
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    margin:45px 0;
+
+    background:rgba(212,175,55,.15);
+
+}
+
+/* ==========================================================
+   Mobile
+   ========================================================== */
+
+@media(max-width:768px){
+
+    header{
+
+        padding:14px 18px;
+
+        height:auto;
+
+        flex-direction:column;
+
+        gap:12px;
+
+    }
+
+    .logo-img{
+
+        width:44px;
+
+        height:44px;
+
+    }
+
+    .logo-text{
+
+        font-size:22px;
+
+    }
+
+    .page-container{
+
+        width:94%;
+
+        margin:30px auto;
+
+        padding:28px 20px;
+
+    }
+
+    .page-container h1{
+
+        font-size:34px;
+
+    }
+
+    .page-container h2{
+
+        font-size:24px;
+
+    }
+
+    .page-container p{
+
+        font-size:16px;
+
+        text-align:left;
+
+    }
+
+}
+
+/* ==========================================================
+   CTA Buttons
+========================================================== */
+
+.cta-buttons{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.action-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:220px;
+
+    height:58px;
+
+    padding:0 26px;
+
+    background:linear-gradient(135deg,#d4af37,#f3d15d);
+
+    color:#111111 !important;
+
+    text-decoration:none !important;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:.35s;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.28);
+
+}
+
+.action-btn:hover{
+
+    background:linear-gradient(135deg,#f3d15d,#ffd95c);
+
+    color:#111111 !important;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 40px rgba(212,175,55,.30);
+
+}
+
+/* ==========================================================
+   Premium Footer
+========================================================== */
+
+.page-footer{
+
+    margin-top:60px;
+
+    padding-top:30px;
+
+    border-top:1px solid rgba(212,175,55,.15);
+
+    text-align:center;
+
+}
+
+.page-footer p{
+
+    margin:8px 0;
+
+    color:#bdbdbd;
+
+    font-size:15px;
+
+}
+
+.page-footer a{
+
+    color:#d4af37;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.30s;
+
+}
+
+.page-footer a:hover{
+
+    color:#fff;
+
+}
+
+/* ==========================================================
+   Page Links
+========================================================== */
+
+.page-section a{
+
+    color:#d4af37;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.30s;
+
+}
+
+.page-section a:hover{
+
+    color:#ffffff;
+
+    text-decoration:underline;
+
+}
+
+/* ==========================================================
+   Mobile
+========================================================== */
+
+@media(max-width:768px){
+
+    .cta-buttons{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .action-btn{
+
+        width:100%;
+
+        max-width:320px;
+
+    }
+
+}
