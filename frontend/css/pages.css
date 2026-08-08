@@ -10,6 +10,11 @@
     box-sizing:border-box;
 }
 
+html{
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+}
+
 body{
 
     font-family:Arial,sans-serif;
@@ -20,6 +25,8 @@ body{
 
     line-height:1.8;
 
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
 }
 
 /* ==========================================================
@@ -47,7 +54,6 @@ header{
     top:0;
 
     z-index:100;
-
 }
 
 .logo{
@@ -57,7 +63,6 @@ header{
     align-items:center;
 
     gap:14px;
-
 }
 
 .logo-img{
@@ -67,7 +72,6 @@ header{
     height:54px;
 
     object-fit:contain;
-
 }
 
 .logo-text{
@@ -79,7 +83,6 @@ header{
     color:#d4af37;
 
     letter-spacing:.4px;
-
 }
 
 header nav a{
@@ -99,7 +102,6 @@ header nav a{
     font-weight:700;
 
     transition:.30s;
-
 }
 
 header nav a:hover{
@@ -107,7 +109,6 @@ header nav a:hover{
     background:#f0cb53;
 
     transform:translateY(-2px);
-
 }
 
 /* ==========================================================
@@ -129,9 +130,7 @@ header nav a:hover{
     padding:55px;
 
     box-shadow:
-
-    0 20px 60px rgba(0,0,0,.35);
-
+        0 20px 60px rgba(0,0,0,.35);
 }
 
 /* ==========================================================
@@ -149,7 +148,6 @@ header nav a:hover{
     font-weight:800;
 
     text-align:center;
-
 }
 
 .page-container h2{
@@ -161,7 +159,6 @@ header nav a:hover{
     font-size:30px;
 
     color:#f0cb53;
-
 }
 
 .page-container h3{
@@ -173,7 +170,6 @@ header nav a:hover{
     font-size:22px;
 
     color:#ffffff;
-
 }
 
 .page-container p{
@@ -185,7 +181,6 @@ header nav a:hover{
     margin-bottom:18px;
 
     text-align:justify;
-
 }
 
 /* ==========================================================
@@ -207,7 +202,6 @@ header nav a:hover{
     backdrop-filter:blur(12px);
 
     transition:.35s;
-
 }
 
 .page-section:hover{
@@ -215,7 +209,6 @@ header nav a:hover{
     border-color:rgba(212,175,55,.30);
 
     transform:translateY(-4px);
-
 }
 
 /* ==========================================================
@@ -227,7 +220,6 @@ header nav a:hover{
     margin-top:18px;
 
     padding-left:22px;
-
 }
 
 .page-container li{
@@ -237,7 +229,6 @@ header nav a:hover{
     color:#d7d7d7;
 
     font-size:17px;
-
 }
 
 /* ==========================================================
@@ -249,7 +240,6 @@ header nav a:hover{
     color:#d4af37;
 
     font-weight:700;
-
 }
 
 /* ==========================================================
@@ -265,7 +255,148 @@ header nav a:hover{
     margin:45px 0;
 
     background:rgba(212,175,55,.15);
+}
 
+/* ==========================================================
+   CTA Buttons
+   ========================================================== */
+
+.cta-buttons{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+}
+
+.action-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:220px;
+
+    height:58px;
+
+    padding:0 26px;
+
+    background:linear-gradient(
+        135deg,
+        #d4af37,
+        #f3d15d
+    );
+
+    color:#111111 !important;
+
+    text-decoration:none !important;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    white-space:normal;
+
+    text-align:center;
+
+    transition:.35s;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.28);
+
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+}
+
+.action-btn:hover{
+
+    background:linear-gradient(
+        135deg,
+        #f3d15d,
+        #ffd95c
+    );
+
+    color:#111111 !important;
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 18px 40px rgba(212,175,55,.30);
+}
+
+/* ==========================================================
+   Premium Footer
+   ========================================================== */
+
+.page-footer{
+
+    margin-top:60px;
+
+    padding-top:30px;
+
+    border-top:1px solid rgba(212,175,55,.15);
+
+    text-align:center;
+}
+
+.page-footer p{
+
+    margin:8px 0;
+
+    color:#bdbdbd;
+
+    font-size:15px;
+
+    line-height:1.6;
+}
+
+.page-footer a{
+
+    color:#d4af37;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.30s;
+}
+
+.page-footer a:hover{
+
+    color:#fff;
+}
+
+/* ==========================================================
+   Page Links
+   ========================================================== */
+
+.page-section a{
+
+    color:#d4af37;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.30s;
+}
+
+.page-section a:hover{
+
+    color:#ffffff;
+
+    text-decoration:underline;
 }
 
 /* ==========================================================
@@ -283,7 +414,6 @@ header nav a:hover{
         flex-direction:column;
 
         gap:12px;
-
     }
 
     .logo-img{
@@ -291,13 +421,22 @@ header nav a:hover{
         width:44px;
 
         height:44px;
-
     }
 
     .logo-text{
 
         font-size:22px;
 
+        line-height:1.2;
+    }
+
+    header nav a{
+
+        font-size:15px;
+
+        padding:10px 20px;
+
+        line-height:1.2;
     }
 
     .page-container{
@@ -308,165 +447,59 @@ header nav a:hover{
 
         padding:28px 20px;
 
+        border-radius:20px;
     }
 
     .page-container h1{
 
         font-size:34px;
 
+        line-height:1.2;
+
+        margin-bottom:20px;
     }
 
     .page-container h2{
 
         font-size:24px;
 
+        line-height:1.3;
+    }
+
+    .page-container h3{
+
+        font-size:20px;
+
+        line-height:1.3;
     }
 
     .page-container p{
 
         font-size:16px;
 
-        text-align:left;
+        line-height:1.7;
 
+        text-align:left;
     }
 
-}
+    .page-section{
 
-/* ==========================================================
-   CTA Buttons
-========================================================== */
+        padding:22px 18px;
 
-.cta-buttons{
+        margin-top:25px;
+    }
 
-    margin-top:30px;
+    .page-container li{
 
-    display:flex;
+        font-size:16px;
 
-    justify-content:center;
+        line-height:1.6;
+    }
 
-    gap:18px;
+    .divider{
 
-    flex-wrap:wrap;
-
-}
-
-.action-btn{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    min-width:220px;
-
-    height:58px;
-
-    padding:0 26px;
-
-    background:linear-gradient(135deg,#d4af37,#f3d15d);
-
-    color:#111111 !important;
-
-    text-decoration:none !important;
-
-    border-radius:14px;
-
-    font-size:17px;
-
-    font-weight:700;
-
-    transition:.35s;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.28);
-
-}
-
-.action-btn:hover{
-
-    background:linear-gradient(135deg,#f3d15d,#ffd95c);
-
-    color:#111111 !important;
-
-    transform:translateY(-4px);
-
-    box-shadow:0 18px 40px rgba(212,175,55,.30);
-
-}
-
-/* ==========================================================
-   Premium Footer
-========================================================== */
-
-.page-footer{
-
-    margin-top:60px;
-
-    padding-top:30px;
-
-    border-top:1px solid rgba(212,175,55,.15);
-
-    text-align:center;
-
-}
-
-.page-footer p{
-
-    margin:8px 0;
-
-    color:#bdbdbd;
-
-    font-size:15px;
-
-}
-
-.page-footer a{
-
-    color:#d4af37;
-
-    text-decoration:none;
-
-    font-weight:600;
-
-    transition:.30s;
-
-}
-
-.page-footer a:hover{
-
-    color:#fff;
-
-}
-
-/* ==========================================================
-   Page Links
-========================================================== */
-
-.page-section a{
-
-    color:#d4af37;
-
-    text-decoration:none;
-
-    font-weight:700;
-
-    transition:.30s;
-
-}
-
-.page-section a:hover{
-
-    color:#ffffff;
-
-    text-decoration:underline;
-
-}
-
-/* ==========================================================
-   Mobile
-========================================================== */
-
-@media(max-width:768px){
+        margin:35px 0;
+    }
 
     .cta-buttons{
 
@@ -474,6 +507,7 @@ header nav a:hover{
 
         align-items:center;
 
+        gap:14px;
     }
 
     .action-btn{
@@ -482,6 +516,32 @@ header nav a:hover{
 
         max-width:320px;
 
+        min-width:0;
+
+        height:58px;
+
+        padding:0 18px;
+
+        font-size:17px;
+
+        line-height:1.2;
+
+        white-space:normal;
     }
 
+    .page-footer{
+
+        margin-top:40px;
+
+        padding-top:24px;
+    }
+
+    .page-footer p{
+
+        font-size:15px;
+
+        line-height:1.6;
+
+        margin:8px 0;
+    }
 }
