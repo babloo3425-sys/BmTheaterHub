@@ -390,6 +390,10 @@ header nav a:hover{
     font-weight:700;
 
     transition:.30s;
+
+    overflow-wrap:anywhere;
+
+    word-break:break-word;
 }
 
 .page-section a:hover{
