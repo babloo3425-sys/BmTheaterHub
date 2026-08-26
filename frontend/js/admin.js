@@ -6,6 +6,79 @@
 const token = localStorage.getItem("token");
 
 /* =========================================
+   Edit About Button Styles
+========================================= */
+
+const editAboutButtonStyle =
+    document.createElement("style");
+
+editAboutButtonStyle.id =
+    "editAboutButtonStyles";
+
+editAboutButtonStyle.textContent = `
+
+    .edit-about-btn{
+
+        display:inline-flex !important;
+
+        align-items:center;
+
+        justify-content:center;
+
+        min-height:44px;
+
+        padding:0 18px;
+
+        margin-top:10px;
+
+        border:0;
+
+        border-radius:10px;
+
+        background:#f1f3f5 !important;
+
+        color:#202124 !important;
+
+        font-family:inherit;
+
+        font-size:14px;
+
+        font-weight:700;
+
+        line-height:1;
+
+        cursor:pointer;
+
+        transition:
+            background .15s ease,
+            color .15s ease,
+            transform .15s ease,
+            box-shadow .15s ease;
+
+    }
+
+    .edit-about-btn:hover{
+
+        background:#e3e6eb !important;
+
+        color:#111318 !important;
+
+        box-shadow:
+            0 4px 12px rgba(0,0,0,.12);
+
+    }
+
+    .edit-about-btn:active{
+
+        transform:scale(.98);
+
+    }
+
+`;
+
+document.head.appendChild(editAboutButtonStyle);
+
+/* =========================================
    Admin Authentication
 ========================================= */
 
@@ -260,7 +333,8 @@ ${profile.active ? "⏸ Deactivate" : "▶ Activate"}
 class="edit-about-btn"
 onclick="openEditAboutModal(
 '${profile._id}',
-decodeURIComponent('${encodeURIComponent(profile.name || "")}')
+decodeURIComponent('${encodeURIComponent(profile.name || "")}'),
+decodeURIComponent('${encodeURIComponent(profile.about || "")}')
 )">
 ✏️ Edit About
 </button>
@@ -585,6 +659,62 @@ function createEditAboutModal(){
     style.id = "editAboutModalStyles";
 
     style.textContent = `
+
+        .edit-about-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:44px;
+
+    padding:0 18px;
+
+    margin-top:10px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#f1f3f5 !important;
+
+    color:#202124 !important;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:
+        background .15s ease,
+        color .15s ease,
+        transform .15s ease,
+        box-shadow .15s ease;
+
+}
+
+.edit-about-btn:hover{
+
+    background:#e3e6eb !important;
+
+    color:#111318 !important;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+
+}
+
+.edit-about-btn:active{
+
+    transform:scale(.98);
+
+}
 
         #editAboutModal{
 
@@ -1212,7 +1342,8 @@ function createEditAboutModal(){
 
 async function openEditAboutModal(
     profileId,
-    name
+    name,
+    about
 ){
 
     createEditAboutModal();
@@ -1242,10 +1373,10 @@ async function openEditAboutModal(
     artistName.textContent =
         name || "Artist Profile";
 
-    textarea.value = "";
+    textarea.value = about || "";
 
     counter.textContent =
-        "0 / 5000";
+        `${textarea.value.length} / 5000`;
 
     message.textContent =
         "Loading About...";
@@ -1267,24 +1398,31 @@ async function openEditAboutModal(
 
         );
 
-        const profile = await response.json();
+        const profileResponse =
+    await response.json();
 
 
-        if(!response.ok){
+if(!response.ok){
 
-            throw new Error(
-                profile.message ||
-                "Unable to load profile."
-            );
+    throw new Error(
+        profileResponse.message ||
+        "Unable to load profile."
+    );
 
-        }
+}
 
 
-        textarea.value =
-            profile.about || "";
+const profile =
+    profileResponse.profile ||
+    profileResponse.data ||
+    profileResponse;
 
-        counter.textContent =
-            `${textarea.value.length} / 5000`;
+
+textarea.value =
+    profile.about || "";
+
+counter.textContent =
+    `${textarea.value.length} / 5000`;
 
         message.textContent = "";
 
