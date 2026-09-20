@@ -6,7 +6,7 @@ loginBtn.addEventListener("click", login);
 async function login() {
 
     const email =
-        document.getElementById("email").value;
+        document.getElementById("email").value.trim();
 
     const password =
         document.getElementById("password").value;
@@ -21,8 +21,8 @@ async function login() {
     try {
 
         const response = await fetch(
-         `${API_BASE_URL}/api/auth/login`,
-        {
+            `${API_BASE_URL}/api/auth/login`,
+            {
                 method: "POST",
 
                 headers: {
@@ -42,34 +42,82 @@ async function login() {
 
         if (!response.ok) {
 
-            alert(data.message);
+            alert(
+                data.message ||
+                "Login failed."
+            );
+
+            return;
+        }
+
+        if (!data.token) {
+
+            alert(
+                "Login failed. Authentication token not received."
+            );
 
             return;
         }
 
         localStorage.setItem(
-        "token",
-        data.token
-      );
+            "token",
+            data.token
+        );
 
-         alert("Login Successful");
+        /*
+        =====================================================
+        Read role from JWT only for frontend page routing.
 
-        if(data.user.role === "admin"){
+        Backend authentication/authorization remains the
+        actual security layer.
+        =====================================================
+        */
 
-        window.location.href =
-        "admin.html";
+        let role = "user";
 
-      }
-        else{
+        try {
 
-         window.location.href =
-         "create-profile.html";
+            const payload =
+                JSON.parse(
+                    atob(
+                        data.token
+                            .split(".")[1]
+                            .replace(/-/g, "+")
+                            .replace(/_/g, "/")
+                    )
+                );
 
-    }
+            role = payload.role || "user";
+
+        } catch (tokenError) {
+
+            console.error(
+                "Token Decode Error:",
+                tokenError
+            );
+
+            role = "user";
+        }
+
+        alert("Login Successful");
+
+        if (role === "admin") {
+
+            window.location.href =
+                "admin.html";
+
+        } else {
+
+            window.location.href =
+                "create-profile.html";
+        }
 
     } catch (error) {
 
-        console.log(error);
+        console.error(
+            "Login Error:",
+            error
+        );
 
         alert("Server Error");
     }

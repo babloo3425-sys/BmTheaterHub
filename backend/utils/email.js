@@ -60,12 +60,19 @@ async function sendEmail({
 
     catch (error) {
 
+        const status =
+            error.response?.status || "unknown";
+
+        const brevoMessage =
+            error.response?.data?.message ||
+            "Email service request failed.";
+
         console.error(
-
-            "BREVO API ERROR:",
-
-            error.response?.data || error.message
-
+            "Brevo Email Error:",
+            {
+                status,
+                message: brevoMessage
+            }
         );
 
         throw error;

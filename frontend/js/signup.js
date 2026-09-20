@@ -24,9 +24,8 @@ async function signup() {
     try {
 
         const response = await fetch(
-         `${API_BASE_URL}/api/auth/signup`,
-       
-         {
+            `${API_BASE_URL}/api/auth/signup`,
+            {
                 method: "POST",
 
                 headers: {
@@ -50,19 +49,28 @@ async function signup() {
             return;
         }
 
-        localStorage.setItem(
-            "token",
-            data.token
+        /*
+        =========================================
+        IMPORTANT
+        =========================================
+
+        Signup no longer returns a login token.
+
+        User must verify the email first.
+        Therefore we do NOT save a token
+        and we do NOT open create-profile.html.
+        =========================================
+        */
+
+        alert(
+            "Account created successfully.\n\n" +
+            "Please check your email and click the " +
+            "verification link to verify your account."
         );
-
-        alert("Account Created Successfully");
-
-        window.location.href =
-        "create-profile.html";
 
     } catch (error) {
 
-        console.log(error);
+        console.log("Signup Error:", error);
 
         alert("Server Error");
     }

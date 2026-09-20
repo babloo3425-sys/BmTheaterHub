@@ -21,23 +21,44 @@ const userSchema = new mongoose.Schema(
       required: true
     },
 
-    resetPasswordToken: {
+    // =========================================
+    // Email Verification
+    // =========================================
 
+    emailVerified: {
+      type: Boolean,
+      default: false
+    },
+
+    emailVerificationToken: {
       type: String,
-
       default: ""
+    },
 
-},
+    emailVerificationExpires: {
+      type: Date,
+      default: null
+    },
+
+    // =========================================
+    // Password Reset
+    // =========================================
+
+    resetPasswordToken: {
+      type: String,
+      default: ""
+    },
 
     resetPasswordExpires: {
-
       type: Date,
-
       default: null
+    },
 
-},
+    // =========================================
+    // User Role
+    // =========================================
 
-      role: {
+    role: {
       type: String,
       enum: ["user", "admin"],
       default: "user"
