@@ -1012,16 +1012,20 @@ router.post("/login", async (req, res) => {
 
         if (!email || !password) {
             return res.status(400).json({
+                success: false,
                 message: "Email and password are required"
             });
         }
 
+        const normalizedEmail = email.trim().toLowerCase();
+
         const user = await User.findOne({
-        email: email.trim().toLowerCase()
-     });
+            email: normalizedEmail
+        });
 
         if (!user) {
             return res.status(400).json({
+                success: false,
                 message: "User not found"
             });
         }
@@ -1033,62 +1037,63 @@ router.post("/login", async (req, res) => {
 
         if (!isMatch) {
             return res.status(400).json({
+                success: false,
                 message: "Invalid password"
             });
         }
 
         // =========================================
-       // Email Verification Security Check
-      // =========================================
+        // EMAIL VERIFICATION SECURITY CHECK
+        // =========================================
 
-       if (!user.emailVerified) {
-       return res.status(403).json({
-        success: false,
-        emailVerified: false,
-        message:
-        "Please verify your email before logging in. Check your inbox for the verification link."
-       });
-     }
+        if (!user.emailVerified) {
+            return res.status(403).json({
+                success: false,
+                emailVerified: false,
+                emailVerificationRequired: true,
+                message:
+                    "Please verify your email before logging in. Check your inbox for the verification link."
+            });
+        }
+
+        // =========================================
+        // CREATE JWT ONLY AFTER EMAIL VERIFICATION
+        // =========================================
 
         const token = jwt.sign(
-     {
-        userId: user._id,
-        role: user.role
-     },
-        process.env.JWT_SECRET,
-     {
-        expiresIn: "30d"
-     }
-   );
+            {
+                userId: user._id,
+                role: user.role
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "30d"
+            }
+        );
 
-        res.json({
-
-        message: "Login successful",
-
-        token,
-
-         user: {
-
-        id: user._id,
-
-        name: user.name,
-
-        email: user.email,
-
-        role: user.role
-
-    }
-
-});
+        return res.status(200).json({
+            success: true,
+            message: "Login successful",
+            token,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        });
 
     } catch (error) {
-        res.status(500).json({
-            message: error.message
+        console.error("Login Error:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error."
         });
     }
 });
 
-    /* =========================================
+/* =========================================
          Forgot Password
       ========================================= */
 

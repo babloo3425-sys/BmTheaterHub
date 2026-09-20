@@ -42,13 +42,82 @@ async function login() {
 
         if (!response.ok) {
 
-            alert(
-                data.message ||
-                "Login failed."
+    if (
+        response.status === 403 &&
+        data.emailVerificationRequired
+    ) {
+
+        const resend =
+            confirm(
+                "Your email is not verified.\n\n" +
+                "Click OK to receive a new verification email."
             );
 
+        if (!resend) {
             return;
         }
+
+        try {
+
+            const resendResponse =
+                await fetch(
+                    `${API_BASE_URL}/api/auth/resend-verification`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            email
+                        })
+                    }
+                );
+
+            const resendData =
+                await resendResponse.json();
+
+            if (!resendResponse.ok) {
+
+                alert(
+                    resendData.message ||
+                    "Unable to resend verification email."
+                );
+
+                return;
+            }
+
+            alert(
+                resendData.message ||
+                "Verification email sent successfully. " +
+                "Please check your inbox."
+            );
+
+        } catch (resendError) {
+
+            console.error(
+                "Resend Verification Error:",
+                resendError
+            );
+
+            alert(
+                "Unable to send verification email. " +
+                "Please try again."
+            );
+        }
+
+        return;
+    }
+
+    alert(
+        data.message ||
+        "Login failed."
+    );
+
+    return;
+}
 
         if (!data.token) {
 
