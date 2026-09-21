@@ -488,9 +488,9 @@ router.post("/resend-verification", async (req, res) => {
             verificationTokenHash;
 
         user.emailVerificationExpires =
-            new Date(
-                now + 30 * 60 * 1000
-            );
+        new Date(
+        now + 24 * 60 * 60 * 1000
+    );
 
         user.emailVerificationLastSentAt =
             new Date(now);
