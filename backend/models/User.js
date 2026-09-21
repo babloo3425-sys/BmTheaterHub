@@ -40,6 +40,16 @@ const userSchema = new mongoose.Schema(
       default: null
     },
 
+    emailVerificationLastSentAt: {
+      type: Date,
+      default: null
+    },
+
+    emailVerificationSendCount: {
+      type: Number,
+      default: 0
+    },
+
     // =========================================
     // Password Reset
     // =========================================

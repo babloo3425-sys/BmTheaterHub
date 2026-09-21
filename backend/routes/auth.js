@@ -361,24 +361,22 @@ www.bmtheaterhub.com
     }
 });
 
-         // =========================================
-// Resend Email Verification
-// =========================================
+/* =========================================
+   Resend Verification Email
+========================================= */
 
 router.post("/resend-verification", async (req, res) => {
     try {
-
         const { email } = req.body;
 
         if (!email) {
             return res.status(400).json({
                 success: false,
-                message: "Email is required."
+                message: "Email is required"
             });
         }
 
-        const normalizedEmail =
-            email.trim().toLowerCase();
+        const normalizedEmail = email.trim().toLowerCase();
 
         const user = await User.findOne({
             email: normalizedEmail
@@ -394,42 +392,119 @@ router.post("/resend-verification", async (req, res) => {
         if (user.emailVerified) {
             return res.status(400).json({
                 success: false,
-                emailVerified: true,
-                message: "This email is already verified."
+                message:
+                    "Email is already verified. You can log in."
             });
         }
 
-        // =========================================
-        // Generate new secure verification token
-        // =========================================
+        const now = Date.now();
 
-        const verificationToken = crypto
-            .randomBytes(32)
-            .toString("hex");
+        const lastSentAt = user.emailVerificationLastSentAt
+            ? new Date(
+                user.emailVerificationLastSentAt
+            ).getTime()
+            : 0;
 
-        const verificationTokenHash = crypto
-            .createHash("sha256")
-            .update(verificationToken)
-            .digest("hex");
+        let sendCount =
+            Number(user.emailVerificationSendCount) || 0;
 
-        const verificationExpires =
-            new Date(Date.now() + 30 * 60 * 1000);
+        /*
+        =========================================
+        RATE LIMIT
+        =========================================
 
-        // =========================================
-        // Replace old token
-        // =========================================
+        Minimum 60 seconds between emails.
+        Maximum 5 emails within 1 hour.
+        =========================================
+        */
 
-        user.emailVerificationToken =
+        if (
+            lastSentAt &&
+            now - lastSentAt < 60 * 1000
+        ) {
+            return res.status(429).json({
+                success: false,
+                message:
+                    "Please wait 60 seconds before requesting another verification email."
+            });
+        }
+
+        /*
+        =========================================
+        RESET HOURLY COUNTER
+        =========================================
+        */
+
+        if (
+            lastSentAt &&
+            now - lastSentAt >= 60 * 60 * 1000
+        ) {
+            sendCount = 0;
+        }
+
+        if (sendCount >= 5) {
+            return res.status(429).json({
+                success: false,
+                message:
+                    "Too many verification email requests. Please try again after 1 hour."
+            });
+        }
+
+        /*
+        =========================================
+        SAVE CURRENT STATE
+        =========================================
+        */
+
+        const previousToken =
+            user.emailVerificationToken;
+
+        const previousExpires =
+            user.emailVerificationExpires;
+
+        const previousLastSentAt =
+            user.emailVerificationLastSentAt;
+
+        const previousSendCount =
+            user.emailVerificationSendCount;
+
+        /*
+        =========================================
+        GENERATE NEW SECURE TOKEN
+        =========================================
+        */
+
+        const verificationToken =
+            crypto.randomBytes(32).toString("hex");
+
+        const verificationTokenHash =
+            crypto
+                .createHash("sha256")
+                .update(verificationToken)
+                .digest("hex");
+
+
+                user.emailVerificationToken =
             verificationTokenHash;
 
         user.emailVerificationExpires =
-            verificationExpires;
+            new Date(
+                now + 30 * 60 * 1000
+            );
+
+        user.emailVerificationLastSentAt =
+            new Date(now);
+
+        user.emailVerificationSendCount =
+            sendCount + 1;
 
         await user.save();
 
-        // =========================================
-        // Verification URL
-        // =========================================
+        /*
+        =========================================
+        VERIFICATION LINK
+        =========================================
+        */
 
         const apiBaseUrl =
             process.env.API_BASE_URL ||
@@ -438,21 +513,26 @@ router.post("/resend-verification", async (req, res) => {
         const verificationLink =
             `${apiBaseUrl}/api/auth/verify-email?token=${verificationToken}`;
 
-        // =========================================
-        // Send Verification Email
-        // =========================================
+        /*
+        =========================================
+        SEND EMAIL
+        =========================================
+        */
 
-        await sendEmail({
-            to: user.email,
+        try {
 
-            subject:
-                "Verify Your BMTheaterHub Email 🎭",
+            await sendEmail({
+                to: user.email,
 
-            html: `
+                subject:
+                    "Verify Your BMTheaterHub Email 🎭",
+
+                html: `
 <!DOCTYPE html>
 <html>
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -467,43 +547,21 @@ router.post("/resend-verification", async (req, res) => {
 <body
     style="
         margin:0;
-        padding:0;
+        padding:40px 15px;
         background:#f4f6fb;
         font-family:Arial,Helvetica,sans-serif;
     "
 >
 
-<table
-    width="100%"
-    cellpadding="0"
-    cellspacing="0"
-    style="padding:40px 15px;"
->
-
-<tr>
-
-<td align="center">
-
-<table
-    width="600"
-    cellpadding="0"
-    cellspacing="0"
+<div
     style="
         max-width:600px;
+        margin:auto;
         background:#ffffff;
+        padding:40px;
         border-radius:16px;
-        overflow:hidden;
-        box-shadow:0 8px 25px rgba(0,0,0,.08);
-    "
->
-
-<tr>
-
-<td
-    style="
-        background:#5b3df5;
-        padding:30px;
         text-align:center;
+        box-shadow:0 8px 25px rgba(0,0,0,.08);
     "
 >
 
@@ -513,113 +571,75 @@ router.post("/resend-verification", async (req, res) => {
     alt="BMTheaterHub"
 >
 
-</td>
-
-</tr>
-
-<tr>
-
-<td style="padding:40px;">
-
-<h2
-    style="
-        margin-top:0;
-        color:#222;
-    "
->
-
-Verify Your Email 🎭
-
+<h2 style="color:#222;">
+    Verify Your Email 🎭
 </h2>
 
 <p
     style="
-        font-size:16px;
         color:#555;
-        line-height:1.8;
-    "
->
-
-Hello <strong>${user.name}</strong>,
-
-</p>
-
-<p
-    style="
+        line-height:1.7;
         font-size:16px;
-        color:#555;
-        line-height:1.8;
     "
 >
-
-Please click the button below to verify
-your BMTheaterHub email address.
-
+    Click the button below to verify your
+    BMTheaterHub email address.
 </p>
-
-<div
-    style="
-        text-align:center;
-        margin:35px 0;
-    "
->
 
 <a
     href="${verificationLink}"
     style="
+        display:inline-block;
         background:#5b3df5;
         color:#ffffff;
-        padding:16px 36px;
+        padding:16px 30px;
         text-decoration:none;
         border-radius:8px;
         font-weight:bold;
-        display:inline-block;
+        margin-top:15px;
     "
 >
-
-Verify My Email
-
+    Verify My Email
 </a>
 
-</div>
+<p
+    style="
+        margin-top:25px;
+        color:#777;
+        font-size:13px;
+        word-break:break-all;
+    "
+>
+    ${verificationLink}
+</p>
 
 <div
     style="
-        background:#f5f2ff;
-        border-left:5px solid #5b3df5;
-        padding:18px;
+        background:#fff8e8;
+        border-left:5px solid #ffb300;
+        padding:15px;
         border-radius:8px;
-        font-size:15px;
         color:#555;
         line-height:1.7;
+        margin-top:25px;
+        text-align:left;
     "
 >
-
-<strong>Security notice:</strong>
-
-<br>
-
-This new verification link will expire in
-<strong>30 minutes</strong>.
-
-<br>
-
-Any previous verification link is no longer valid.
-
+    ⏰ This verification link expires in
+    <strong>30 minutes</strong>
+    and can be used only once.
 </div>
 
 <p
     style="
-        margin-top:30px;
-        font-size:14px;
         color:#777;
+        font-size:14px;
         line-height:1.7;
+        margin-top:25px;
     "
 >
-
-If you did not request this email,
-you can safely ignore it.
-
+    If you did not request this email,
+    you can safely ignore it.
 </p>
 
 <hr
@@ -632,42 +652,62 @@ you can safely ignore it.
 
 <p
     style="
-        text-align:center;
-        font-size:13px;
         color:#777;
+        font-size:13px;
     "
 >
-
-© 2026 BMTheaterHub
-
-<br><br>
-
-www.bmtheaterhub.com
-
+    © 2026 BMTheaterHub
+    <br><br>
+    www.bmtheaterhub.com
 </p>
 
-</td>
-
-</tr>
-
-</table>
-
-</td>
-
-</tr>
-
-</table>
+</div>
 
 </body>
 
 </html>
 `
-        });
+            });
+
+        } catch (emailError) {
+
+            /*
+            =========================================
+            EMAIL FAILED
+            RESTORE PREVIOUS STATE
+            =========================================
+            */
+
+            user.emailVerificationToken =
+                previousToken;
+
+            user.emailVerificationExpires =
+                previousExpires;
+
+            user.emailVerificationLastSentAt =
+                previousLastSentAt;
+
+            user.emailVerificationSendCount =
+                previousSendCount;
+
+            await user.save();
+
+            console.error(
+                "Resend Verification Email Error:",
+                emailError
+            );
+
+            return res.status(500).json({
+                success: false,
+                message:
+                    "Unable to send verification email. Please try again."
+            });
+        }
 
         return res.status(200).json({
             success: true,
             message:
-                "A new verification email has been sent. Please check your inbox."
+                "Verification email sent successfully. Please check your inbox."
         });
 
     } catch (error) {
@@ -680,12 +720,12 @@ www.bmtheaterhub.com
         return res.status(500).json({
             success: false,
             message:
-                "Unable to send verification email. Please try again."
+                "Unable to process verification request."
         });
     }
 });
 
-       // =========================================
+// =========================================
       // Verify Email
      // =========================================
 
