@@ -854,45 +854,89 @@ router.post("/resend-verification", async (req, res) => {
 
         if (user.emailVerified) {
             return res.status(200).send(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-                    <title>Email Already Verified</title>
-                </head>
+    <!DOCTYPE html>
+    <html>
 
-                <body style="
-                    margin:0;
-                    padding:40px 20px;
-                    background:#f4f6fb;
-                    font-family:Arial,Helvetica,sans-serif;
-                    text-align:center;
-                ">
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1.0"
+        >
+        <title>Email Already Verified</title>
+    </head>
 
-                    <div style="
-                        max-width:500px;
-                        margin:60px auto;
-                        background:#fff;
-                        padding:40px 25px;
-                        border-radius:16px;
-                        box-shadow:0 8px 25px rgba(0,0,0,.08);
-                    ">
+    <body style="
+        margin:0;
+        padding:40px 20px;
+        background:#f4f6fb;
+        font-family:Arial,Helvetica,sans-serif;
+        text-align:center;
+    ">
 
-                        <h2 style="color:#28a745;">
-                            Email Already Verified
-                        </h2>
+        <div style="
+            max-width:500px;
+            margin:60px auto;
+            background:#fff;
+            padding:40px 25px;
+            border-radius:16px;
+            box-shadow:0 8px 25px rgba(0,0,0,.08);
+        ">
 
-                        <p style="color:#555;line-height:1.7;">
-                            Your BMTheaterHub email has already been verified.
-                        </p>
+            <div style="
+                font-size:55px;
+                margin-bottom:15px;
+            ">
+                ✅
+            </div>
 
-                    </div>
+            <h2 style="
+                color:#28a745;
+                margin-bottom:15px;
+            ">
+                Email Already Verified
+            </h2>
 
-                </body>
-                </html>
-            `);
-        }
+            <p style="
+                color:#555;
+                line-height:1.7;
+                font-size:16px;
+            ">
+                Your BMTheaterHub email has already been verified.
+            </p>
+
+            <p style="
+                color:#555;
+                line-height:1.7;
+                font-size:16px;
+            ">
+                You can log in now and continue to create your profile.
+            </p>
+
+            <a
+                href="https://bmtheaterhub.com/login.html"
+                style="
+                    display:inline-block;
+                    margin-top:20px;
+                    padding:14px 30px;
+                    background:#5b3df5;
+                    color:#fff;
+                    text-decoration:none;
+                    border-radius:10px;
+                    font-size:16px;
+                    font-weight:bold;
+                "
+            >
+                Go to Login
+            </a>
+
+          </div>
+
+        </body>
+
+       </html>
+     `);
+    }
 
         /*
         =========================================
@@ -923,74 +967,92 @@ router.post("/resend-verification", async (req, res) => {
         */
 
         return res.status(200).send(`
-            <!DOCTYPE html>
-            <html>
+        <!DOCTYPE html>
+        <html>
 
-            <head>
-                <meta charset="UTF-8">
+        <head>
+        <meta charset="UTF-8">
 
-                <meta
-                    name="viewport"
-                    content="width=device-width,initial-scale=1.0"
-                >
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1.0"
+        >
 
-                <title>Email Verified</title>
+        <title>Email Verified</title>
 
-            </head>
+        </head>
 
-            <body style="
-                margin:0;
-                padding:40px 20px;
-                background:#f4f6fb;
-                font-family:Arial,Helvetica,sans-serif;
-                text-align:center;
+        <body style="
+        margin:0;
+        padding:40px 20px;
+        background:#f4f6fb;
+        font-family:Arial,Helvetica,sans-serif;
+        text-align:center;
+      ">
+
+        <div style="
+            max-width:500px;
+            margin:60px auto;
+            background:#fff;
+            padding:40px 25px;
+            border-radius:16px;
+            box-shadow:0 8px 25px rgba(0,0,0,.08);
+        ">
+
+            <div style="
+                font-size:55px;
+                margin-bottom:15px;
             ">
+                ✅
+            </div>
 
-                <div style="
-                    max-width:500px;
-                    margin:60px auto;
-                    background:#fff;
-                    padding:40px 25px;
-                    border-radius:16px;
-                    box-shadow:0 8px 25px rgba(0,0,0,.08);
-                ">
+            <h2 style="
+                color:#28a745;
+                margin-bottom:15px;
+            ">
+                Email Verified Successfully
+            </h2>
 
-                    <div style="
-                        font-size:55px;
-                        margin-bottom:15px;
-                    ">
-                        ✅
-                    </div>
+            <p style="
+                color:#555;
+                line-height:1.7;
+                font-size:16px;
+            ">
+                Your BMTheaterHub email has been verified successfully.
+            </p>
 
-                    <h2 style="
-                        color:#28a745;
-                        margin-bottom:15px;
-                    ">
-                        Email Verified Successfully
-                    </h2>
+            <p style="
+                color:#555;
+                line-height:1.7;
+                font-size:16px;
+            ">
+                Your account is now ready.
+                Please log in to continue and create your profile.
+            </p>
 
-                    <p style="
-                        color:#555;
-                        line-height:1.7;
-                        font-size:16px;
-                    ">
-                        Your BMTheaterHub email has been verified successfully.
-                    </p>
+            <a
+                href="https://bmtheaterhub.com/login.html"
+                style="
+                    display:inline-block;
+                    margin-top:20px;
+                    padding:14px 30px;
+                    background:#5b3df5;
+                    color:#fff;
+                    text-decoration:none;
+                    border-radius:10px;
+                    font-size:16px;
+                    font-weight:bold;
+                "
+            >
+                Go to Login
+            </a>
 
-                    <p style="
-                        color:#555;
-                        line-height:1.7;
-                        font-size:16px;
-                    ">
-                        You can now return to BMTheaterHub and log in.
-                    </p>
+        </div>
 
-                </div>
+    </body>
 
-            </body>
-
-            </html>
-        `);
+    </html>
+  `);
 
     } catch (error) {
 
