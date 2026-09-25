@@ -24,7 +24,11 @@ const profileSchema = new mongoose.Schema(
     "Sound Engineer",
     "Background Music",
     "Light Engineer",
-    "Theater Trainer"
+    "Theater Trainer",
+    "Playwright / Script Writer",
+    "Makeup Artist",
+    "Costume Designer",
+    "Props Designer"
   ],
   required: true
 },
