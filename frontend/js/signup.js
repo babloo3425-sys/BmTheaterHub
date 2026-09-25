@@ -63,10 +63,13 @@ async function signup() {
         */
 
         alert(
-            "Account created successfully.\n\n" +
-            "Please check your email and click the " +
-            "verification link to verify your account."
-        );
+        "Account created successfully.\n\n" +
+        "Please check your email and click the " +
+        "verification link to verify your account.\n\n" +
+        "After verification, log in to continue."
+      );
+
+      window.location.href = "login.html";
 
     } catch (error) {
 
