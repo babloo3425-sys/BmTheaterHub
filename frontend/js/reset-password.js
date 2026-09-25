@@ -1,3 +1,70 @@
+const newPasswordInput =
+    document.getElementById("newPassword");
+
+const newPasswordToggle =
+    document.getElementById("newPasswordToggle");
+
+newPasswordToggle.addEventListener("click", () => {
+
+    if (newPasswordInput.type === "password") {
+
+        newPasswordInput.type = "text";
+
+        newPasswordToggle.textContent = "🙈";
+
+        newPasswordToggle.setAttribute(
+            "aria-label",
+            "Hide password"
+        );
+
+    } else {
+
+        newPasswordInput.type = "password";
+
+        newPasswordToggle.textContent = "👁️";
+
+        newPasswordToggle.setAttribute(
+            "aria-label",
+            "Show password"
+        );
+    }
+
+});
+
+
+const confirmPasswordInput =
+    document.getElementById("confirmPassword");
+
+const confirmPasswordToggle =
+    document.getElementById("confirmPasswordToggle");
+
+confirmPasswordToggle.addEventListener("click", () => {
+
+    if (confirmPasswordInput.type === "password") {
+
+        confirmPasswordInput.type = "text";
+
+        confirmPasswordToggle.textContent = "🙈";
+
+        confirmPasswordToggle.setAttribute(
+            "aria-label",
+            "Hide password"
+        );
+
+    } else {
+
+        confirmPasswordInput.type = "password";
+
+        confirmPasswordToggle.textContent = "👁️";
+
+        confirmPasswordToggle.setAttribute(
+            "aria-label",
+            "Show password"
+        );
+    }
+
+});
+
 const resetPasswordBtn =
 document.getElementById("resetPasswordBtn");
 
