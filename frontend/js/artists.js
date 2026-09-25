@@ -40,16 +40,52 @@ function renderArtists(profiles){
 
 let allProfiles = [];
 
-function loadStates(profiles){
+function loadStates(){
 
     const stateFilter =
         document.getElementById("stateFilter");
 
     const states = [
-        ...new Set(
-            profiles.map(profile => profile.state)
-        )
-    ].sort();
+
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal",
+
+        "Andaman and Nicobar Islands",
+        "Chandigarh",
+        "Dadra and Nagar Haveli and Daman and Diu",
+        "Delhi",
+        "Jammu and Kashmir",
+        "Ladakh",
+        "Lakshadweep",
+        "Puducherry"
+
+    ];
 
     stateFilter.innerHTML =
         `<option value="">All States</option>`;
@@ -135,7 +171,7 @@ async function loadArtists(){
 
         renderArtists(allProfiles);
 
-        loadStates(allProfiles);
+        loadStates();
     }
 
     catch(error){
