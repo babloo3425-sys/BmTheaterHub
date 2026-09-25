@@ -140,3 +140,43 @@ body{
     text-decoration:underline;
 
 }
+
+/* =========================================
+   Password Field
+========================================= */
+
+.password-field{
+    position:relative;
+    width:100%;
+}
+
+.password-field input{
+    padding-right:55px;
+}
+
+.password-toggle{
+    position:absolute;
+
+    right:0;
+    top:0;
+
+    width:50px !important;
+    height:50px;
+
+    padding:0 !important;
+    margin:0 !important;
+
+    background:transparent !important;
+    color:#d4af37 !important;
+
+    border:none !important;
+    border-radius:0 !important;
+
+    font-size:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
